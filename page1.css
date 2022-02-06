@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  font-family: "Poppins", "Calibri", sans-serif;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+
+.navbar{
+    font-size: calc(13px + 1vh);
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    background-color: #4361EE;
+    width: auto;
+    
+}
+
+.navbar a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.intro{
+    display: flex;
+    flex-direction: row;
+    margin: 2em 1em;
+    padding: 1em;
+    font-size: calc(10px + 0.8vw);
+    height:60vh;
+}
+
+.intro h3, h1, p{
+    margin-bottom: 0.8rem;
+}
+.intro h3{
+    margin-top: 1em;
+}
+
+.left{
+    width: 66%;
+    padding: 0 10px 0 0;
+    float: left;
+}
+.right{
+    width: 33%;
+    padding-right: 5px;
+    float: right;
+}
+.intro .image{
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.education{
+    background-color: #4361EE;
+}
+
+.logo{
+    object-fit: contain;
+    width: 33%;
+}
