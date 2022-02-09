@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  font-family: "Poppins", "Calibri", sans-serif;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+
+.navbar {
+    font-size: calc(13px + 1vh);
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    background-color: #4361ee;
+    width: auto;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: aliceblue;
+  }
