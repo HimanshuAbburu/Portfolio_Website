@@ -3,8 +3,7 @@
   margin: 0;
   font-family: "Poppins", "Calibri", sans-serif;
   scroll-behavior: smooth;
-  overflow: auto;
-  font-size: calc(13px + 1vh);
+  box-sizing: border-box;
 }
 
 .header {
@@ -26,13 +25,15 @@
   left: -15vw;
   width: 15vw;
   background-color: white;
-  /* padding: 1vw 1vw; */
+  padding: 1vw 1vw;
   border-top-right-radius: 1vw;
   border-bottom-right-radius: 1vw;
 }
+
 .dropdown a {
   overflow: auto;
 }
+
 .menuToggler {
   height: 3.5vw;
   width: 3.5vw;
@@ -113,10 +114,10 @@
 .dropdown.open {
   left: 0vw;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-  padding: 1vw;
 }
 
 .navbar {
+  font-size: calc(13px + 1vh);
   display: flex;
   justify-content: space-around;
   padding: 1em;
@@ -129,82 +130,6 @@
   color: aliceblue;
 }
 
-body {
-  background-color: #efefef;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.container {
-  box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5vh;
-  align-content: space-around;
-  overflow: visible;
-  height: 60%;
-}
-
-.questions {
-  background-color: #f84aa7;
-  text-align: center;
-  align-items: center;
-  padding: 1.2em 0.5em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-h2 {
-  vertical-align: center;
-  width: auto;
-}
-
-.answers {
-  background-color: honeydew;
-  box-sizing: border-box;
-  text-align: center;
-  align-items: center;
-  padding: 1em 0 1em 0;
-  width: auto;
-}
-
-.answers ul {
-  margin: 1em;
-  text-align: left;
-}
-
-li {
-  margin: 1em;
-}
-
-.button {
-  width: 100%;
-  background-color: #05f2d2;
-  border: none;
-  height: 7vh;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  font-weight: 800;
-}
-
-.button:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.results {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5vh;
-  text-align: center;
-  align-content: space-around;
-  overflow: visible;
-}
-
 @media screen and (min-width: 650px) {
   .hamburger {
     display: none;
@@ -213,6 +138,7 @@ li {
     display: none;
   }
 
+  .menuToggler,
   .dropdown {
     display: none;
   }
@@ -221,22 +147,5 @@ li {
 @media screen and (max-width: 650px) {
   .navbar {
     display: none;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  ul,
-  li,
-  .answers {
-    padding: 2px;
-    font-size: xx-small;
-    padding: 0;
-    margin: 0;
-  }
-
-  .container {
-    width: fit-content;
-    block-size: fit-content;
-    margin: 10%;
   }
 }
