@@ -135,6 +135,7 @@
   padding: 1em;
   background-color: #4361ee;
   width: auto;
+  border-bottom: 1px solid aliceblue;
 }
 
 .navbar a {
@@ -151,6 +152,7 @@
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
+  height: 60vh;
 }
 i {
   font-size: 1.5vw;
@@ -236,8 +238,101 @@ p {
   }
 }
 
+@media screen and (max-width: 550px) {
+  .educontainer {
+    flex-direction: column;
+    padding-bottom: 2vh;
+  }
+
+  .left {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .right {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .right p {
+    text-decoration: underline;
+    padding-top: 1em;
+  }
+
+  .right ul {
+    padding-bottom: 2vh;
+  }
+
+  .edu h1 {
+    text-align: center;
+    padding: 1vh;
+    font-size: calc(16px + 3vw);
+  }
+
+  .workcontainer {
+    flex-direction: column;
+    padding-bottom: 2vh;
+  }
+
+  .leftwork {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .leftwork img {
+    border-radius: 1em;
+  }
+
+  .rightwork h5 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: calc(14px + 0.8vw);
+    margin-bottom: 1vh;
+  }
+
+  .rightwork {
+    display: flexbox;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: justify;
+  }
+  .rightwork p {
+    text-decoration: underline;
+    padding-top: 1em;
+  }
+
+  .rightwork ul {
+    padding-bottom: 2vh;
+    padding-left: 0;
+  }
+
+  .rightwork li {
+    padding: 1vw;
+  }
+
+  .placement h1 {
+    text-align: center;
+    padding: 1vh;
+    font-size: calc(16px + 3vw);
+  }
+  .morepadding {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .navbar {
     display: none;
+  }
+
+  .nav {
+    font-size: xx-small;
+    /* width: 20%; */
   }
 }
