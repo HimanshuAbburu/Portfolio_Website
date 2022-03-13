@@ -244,6 +244,35 @@ p {
     padding-bottom: 2vh;
   }
 
+  .menuToggler,
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    min-width: 20px;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    height: 2px;
+  }
+
+  .header {
+    height: 5vh;
+    padding: 3vw;
+  }
+
+  .hamburger::after {
+    transform: translateY(0.7vh);
+  }
+  .hamburger::before {
+    transform: translateY(-0.7vh);
+  }
+
+  .menuToggler {
+    min-height: 50px;
+  }
+
   .left {
     display: block;
     margin-left: auto;
