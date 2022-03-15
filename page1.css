@@ -168,28 +168,33 @@ h3 {
 .edu {
   padding: 1vw;
 }
+
+.edu h1 {
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}
+
 .educontainer {
   display: flex;
+  gap: 2em;
 }
 
 .left {
-  width: 35%;
+  width: 40%;
   padding-left: 1vw;
   vertical-align: middle;
 }
 
 .right {
   width: 65%;
-  padding-left: 4vw;
-  padding-right: 2vw;
   align-content: center;
-  text-align: center;
+  text-align: left;
   font-size: inherit;
 }
 
 .right ul,
 p {
-  padding: 0 2vw;
+  padding: 0 1vw;
 }
 
 .placement {
@@ -200,12 +205,13 @@ p {
 
 .workcontainer {
   display: flex;
+  gap: 1em;
 }
 
 .leftwork img {
-  max-width: 90%;
+  width: 100%;
   padding: 2vw;
-  border-radius: 2.8em;
+  border-radius: 1.8em;
 }
 
 .leftwork {
@@ -219,8 +225,11 @@ p {
   padding-top: 2vw;
 }
 
-.morepadding {
-  padding: 0 2vw;
+.rightwork h5 {
+  margin-left: 2em;
+}
+
+.morepadding ul {
   justify-content: left;
 }
 
@@ -273,84 +282,90 @@ p {
     min-height: 50px;
   }
 
+  .edu {
+    word-wrap: break-word;
+  }
+
   .left {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 80%;
   }
 
   .right {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    font-size: calc(10px + 1vw);
+    margin: auto;
+    width: auto;
   }
-  .right p {
-    text-decoration: underline;
-    padding-top: 1em;
+
+  .right h2 {
+    text-align: center;
   }
 
   .right ul {
-    padding-bottom: 2vh;
+    margin-left: 10px;
+  }
+
+  .right p {
+    text-decoration: underline;
+    padding-top: 1em;
+    text-align: center;
   }
 
   .edu h1 {
     text-align: center;
-    padding: 1vh;
     font-size: calc(16px + 3vw);
   }
 
   .workcontainer {
     flex-direction: column;
     padding-bottom: 2vh;
+    word-wrap: break-word;
   }
 
   .leftwork {
-    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 80%;
   }
   .leftwork img {
     border-radius: 1em;
+    image-rendering: auto;
   }
 
   .rightwork h5 {
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-size: calc(14px + 0.8vw);
-    margin-bottom: 1vh;
+    margin-bottom: 1em;
+    margin-left: 0;
+    word-wrap: break-word;
+    font-size: calc(10px + 1vw);
   }
 
   .rightwork {
-    display: flexbox;
-    margin-left: 20%;
-    margin-right: 20%;
-    text-align: justify;
-  }
-  .rightwork p {
-    text-decoration: underline;
-    padding-top: 1em;
-  }
-
-  .rightwork ul {
-    padding-bottom: 2vh;
-    padding-left: 0;
-  }
-
-  .rightwork li {
-    padding: 1vw;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
   }
 
   .placement h1 {
     text-align: center;
     padding: 1vh;
-    font-size: calc(16px + 3vw);
+    font-size: calc(14px + 1vw);
   }
-  .morepadding {
-    margin: 0;
+
+  .rightwork ul {
+    font-size: calc(10px + 1vw);
+    padding: 2em;
+  }
+  .morepadding ul {
+    margin-left: 13px;
     padding: 0;
   }
 }
@@ -362,6 +377,5 @@ p {
 
   .nav {
     font-size: xx-small;
-    /* width: 20%; */
   }
 }
