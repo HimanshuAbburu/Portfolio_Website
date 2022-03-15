@@ -167,17 +167,15 @@ h2 {
   box-sizing: border-box;
   text-align: center;
   align-items: center;
-  padding: 1em 0 1em 0;
   width: auto;
 }
 
 .answers ul {
-  margin: 1em;
   text-align: left;
 }
 
 li {
-  margin: 1em;
+  margin: 10px;
 }
 
 .button {
@@ -222,13 +220,47 @@ li {
   .navbar {
     display: none;
   }
+
+  .answers ul {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menuToggler,
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    min-width: 20px;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    height: 2px;
+  }
+
+  .header {
+    height: 5vh;
+    padding: 3vw;
+  }
+
+  .hamburger::after {
+    transform: translateY(0.7vh);
+  }
+  .hamburger::before {
+    transform: translateY(-0.7vh);
+  }
+
+  .menuToggler {
+    min-height: 50px;
+  }
 }
 
 @media screen and (max-width: 400px) {
   ul,
   li,
   .answers {
-    padding: 2px;
     font-size: xx-small;
     padding: 0;
     margin: 0;
