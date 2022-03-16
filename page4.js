@@ -19,6 +19,12 @@ const API_KEY = `36c723e0df7396aa47e5641ac1ab99f1`;
 const lat = "52.6369";
 const lon = "1.1398";
 
+const timer = document.querySelector('.time');
+const iconImg = document.querySelector('.iconimg');
+const temp = document.querySelector('.temp');
+const description = document.querySelector('.description');
+const windSpeed = document.querySelector('.wind');
+
 async function loadAPI(lattitude, longitude) {
   const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longitude}&appid=${API_KEY}`;
   const response = await fetch(URL);
@@ -32,8 +38,16 @@ async function getTemperatureInCelsius() {
   const tempInCelsius = Math.round(temperature);
   const wind = obj.wind.speed;
   const time = convertToTime(obj.dt);
-  const icon = obj.weather.icon;
+  const icon = obj.weather[0].icon;
   console.log(desc, tempInCelsius, wind, time, icon);
+  
+  timer.innerText = time;
+  temp.innerText = tempInCelsius;
+  windSpeed.innerText = wind;
+  description.innerHTML = `${desc}`;
+  iconImg.src = `http://openweathermap.org/img/wn/${icon}.png`;
+
+  // return (desc, tempInCelsius, wind, time, icon);
 }
 
 function convertToTime(totalSeconds) {
