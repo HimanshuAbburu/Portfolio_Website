@@ -135,6 +135,78 @@ body {
   color: aliceblue;
 }
 
+.weatherlist {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 1em;
+}
+
+.weather {
+  border-radius: 10px;
+  padding: 1vh;
+  font-size: calc(10px + 1vh);
+  align-content: center;
+  text-align: center;
+  background-color: #1c2d75;
+  color: azure;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+/* .nextlist {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+} */
+
+.next {
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 10px;
+  padding: 1vh;
+  font-size: calc(8px + 1vh);
+  background-color: #44d2eb;
+  color: azure;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+
+.nexttable {
+  padding: 5px;
+  background-color: ivory;
+  color: #0e509c;
+  border-radius: 6px;
+  width: 100%;
+}
+
+p {
+  margin-bottom: 0.6em;
+}
+
+.time,
+.city {
+  font-size: calc(5px + 1vh);
+}
+
+img {
+  background-color: rgb(77, 161, 194);
+  border-radius: 50%;
+}
+
+input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 3em;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0e509c;
+  border-radius: 6px;
+}
+
 @media screen and (max-width: 600px) {
   .menuToggler,
   .hamburger,
