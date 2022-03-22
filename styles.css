@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  font-family: "Poppins", "Calibri", sans-serif;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+
+.header {
+    background-color: #4361ee;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1vw 1vw 1vw 1vw;
+    height: 5vw;
+}
+  
+.dropdown {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.3s ease-out;
+    top: 0;
+    bottom: 0;
+    left: -15vw;
+    width: 15vw;
+    background-color: white;
+    padding: 1vw 1vw;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+ }
+  
+.dropdown a {
+    overflow: auto;
+    font-size: 15px;
+    padding: 1vh;
+}
+  
+.menuToggler {
+    height: 3.5vw;
+    width: 3.5vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    border-radius: 2px;
+}
+  
+.hamburger {
+    background: white;
+    border-radius: 3px;
+    width: 2vw;
+    height: 0.3vw;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+  
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 3px;
+    width: 2vw;
+    height: 0.3vw;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+}
+  
+.hamburger::after {
+    transform: translateY(0.5vw);
+}
+  
+.hamburger::before {
+    transform: translateY(-0.5vw);
+}
+  
+.menuToggler.open {
+    margin-left: 15vw;
+    position: fixed;
+    top: 1vw;
+
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+  
+.menuToggler.open .hamburger {
+    transform: translateX(-50%);
+    background: transparent;
+    box-shadow: none;
+}
+  
+.menuToggler.open .hamburger::after {
+    transform: translateX(50%) rotate(45deg);
+    background-color: #4361ee;
+}
+  
+.menuToggler.open .hamburger::before {
+    transform: translateX(50%) rotate(-45deg);
+    background-color: #4361ee;
+}
+  
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+    text-decoration: none;
+    color: #4361ee;
+    font-weight: bold;
+    font-size: 4vw;
+    transition: all 0.3s ease-out;
+    width: 100%;
+    padding: 1vw;
+    background-color: white;
+    border-bottom: 2px solid whitesmoke;
+    border-radius: 0.5vw;
+}
+  
+.nav:hover {
+    background-color: rgb(240, 240, 240);
+    color: #3650c2;
+    font-weight: bolder;
+}
+  
+.dropdown.open {
+    left: 0vw;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+  
+.navbar {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    background-color: #4361ee;
+    width: auto;
+    border-bottom: 1px solid aliceblue;
+}
+  
+.navbar a {
+    text-decoration: none;
+    color: aliceblue;
+}
+  
+.intro {
+    padding: 2em;
+    background-color: #4361ee;
+    color: aliceblue;
+    background-image: url("./images/Hi2.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    height: 60vh;
+}
+
+
+
+@media screen and (min-width:280px) {
+
+    .menuToggler,.hamburger,.hamburger::before,.hamburger::after {
+        min-width: 20px;
+    }
+
+    .hamburger,.hamburger::before,.hamburger::after {
+        height: 2px;
+    }
+
+    .header {
+        height: 5vh;
+        padding: 3vw;
+    }
+
+    .hamburger::after {
+        transform: translateY(0.7vh);
+    }
+    .hamburger::before {
+        transform: translateY(-0.7vh);
+    }
+
+    .menuToggler {
+        min-height: 50px;
+    }
+
+    .header {
+        border-bottom: 0.2vw solid aliceblue;
+    }
+
+    .navbar{
+        display: none;
+    }
+    
+    .intro{
+        padding: 1em;
+        font-size: small;
+        background-size: contain;
+        background-position-y: bottom;
+        align-items: flex-start;
+        height: 50vh;
+    }
+
+    .intro h1, .introh3, .intro p{
+        padding-bottom: 1em;
+    }
+
+    .edu{
+        padding: 0.8em;
+    }
+
+    .edu h1{
+        margin: 0;
+    }
+
+    .left{
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .right{
+        width: 100%;
+    }
+
+    .edu h1{
+        text-align: center;
+        font-size: 2em;
+    }
+
+    .right h2{
+        text-align: center;
+        font-size: 1.2em;
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+    }
+
+    .right ul{
+        padding: 10px;
+    }
+
+    .right li{
+        text-align: left;
+        font-size: 19px;
+    }
+
+    .placement h1{
+        text-align: center;
+        margin: 1em;
+        font-size: 30px;
+    }
+
+    .workcontainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leftwork{
+        width: 90%;
+        padding: 1em;
+        border-radius: 1em;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .leftwork img{
+        border-radius: 1em;
+    }
+
+    .rightwork{
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .rightwork h5{
+        text-align: center;
+    }
+
+    .rightwork ul{
+        padding: 1em;
+    }
+
+    .dropdown{
+        left: -20vw;
+    }
+
+    .dropdown.open{
+
+    }
+}
+
+@media screen and (min-width:550px) {
+    .header{
+        display: none;
+    }
+
+    .navbar{
+        display: flex;
+    }
+    .dropdown{
+        display: none;
+    }
+}
+
+@media screen and (min-width:800px) {
+
+
+    .educontainer{
+        width: 100%;
+        display: flex;
+        gap: 1em;
+    }
+
+    .left{
+        margin-top: 2em;
+        width: 50%;
+    }
+    .leftimg{
+        width: 100%;
+    }
+
+    .right{
+        width: 60%;
+    }
+
+    .placement h1{
+        text-align: center;
+        margin: 1em;
+        font-size: 30px;
+    }
+
+    .workcontainer{
+        display: flex;
+        gap: 1em;
+        flex-direction: row;
+    }
+
+    .leftwork{
+        margin-top: 1em;
+        width: 40%;
+    }
+    
+    .leftwork img{
+        border-radius: 6px;
+    }    
+
+    .rightwork{
+        margin-top: 1em;
+        width: 50%;
+        align-items: flex-start;
+        text-align: left;
+        
+    }
+}
