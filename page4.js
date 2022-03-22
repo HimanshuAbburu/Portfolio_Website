@@ -110,10 +110,10 @@ async function forTommorrow() {
   console.log(dttxtTomPlus1, dttxtTom);
   let dateTom = dttxtTom
     .split(" ")[1]
-    .substring(dttxtTom.split(" ")[1].indexOf("-") + 1);
+    .substring(dttxtTom.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length-3);
   let dateTomPlus1 = dttxtTomPlus1
     .split(" ")[1]
-    .substring(dttxtTomPlus1.split(" ")[1].indexOf("-") + 1);
+    .substring(dttxtTomPlus1.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length-3);
 
   let tomTemp = Math.ceil(Number(res.list[0].main.temp) - 273.15);
   let tomPlus1Temp = Math.ceil(res.list[1].main.temp - 273.15);
