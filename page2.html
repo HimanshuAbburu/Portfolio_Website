@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1</title>
-    <link rel="stylesheet" href="./page2.css" />
+    <title>Quiz App</title>
+  
+    <link rel="stylesheet" href="./styles.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -19,26 +20,31 @@
     </div>
     <nav class="navbar">
       <a href="./page1.html">Home</a>
-      <a href="./page2.html">Project 1</a>
-      <a href="./page3.html">Project 2</a>
-      <a href="./page4.html">Project 3</a>
+      <a href="./page2.html">Quiz App</a>
+      <a href="./page3.html">To-Do List</a>
+      <a href="./page4.html">Weather API</a>
     </nav>
     <div class="dropdown">
-      <a href="./page1.html" class="nav" id="Home"><i class="bx bxs-home-circle"></i>Home</a>
-      <a href="./page2.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Project 1</a>  
-      <a href="./page3.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Project 2</a>
-      <a href="./page4.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Project 3</a>
+      <a href="./page1.html" class="nav"><i class="bx bxs-home-circle"></i>Home</a>
+      <a href="./page2.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Quiz App</a>  
+      <a href="./page3.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>To-Do List</a>
+      <a href="./page4.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Weather API</a>
     </div>
 
-    <header>MCU Quiz App</header>
+    <header>
+      <h2>MCU Quiz App</h2>
+      <ol class="instructions">
+        <li>Choose the correct answer using the radio buttons and click submit after each question.</li>
+      </ol>
+    </header>
+
 
     <div class="main">
       <div class="container">
         <div class="questions">
-          <h2 id="question">
-            Why did Kattappa Kill baahubali?Why did Kattappa Kill baahubali?Why
-            did Kattappa Kill baahubali?Why did Kattappa Kill baahubali?
-          </h2>
+          <p id="question">
+            Who am I?
+          </p>
         </div>
         <div class="answers">
           <ul>
