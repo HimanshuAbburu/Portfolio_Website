@@ -111,7 +111,7 @@ submitBtn.addEventListener("click", () => {
   } else {
     document.querySelector(".results").insertAdjacentHTML(
       "afterbegin",
-      `<h2>You got ${score} out of ${quizQuestions.length} questions correctly.</h2>
+      `<p>You got ${score} out of ${quizQuestions.length} questions correctly.</p>
     `,
     );
     submitBtn.disabled = true;
