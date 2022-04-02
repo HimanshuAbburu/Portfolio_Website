@@ -1,11 +1,14 @@
+/*  */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 * {
   margin: 0;
+  padding: 0;
   font-family: "Poppins", "Calibri", sans-serif;
   scroll-behavior: smooth;
   overflow: auto;
 }
-
+/* Navbar */
 .header {
   background-color: #4361ee;
   display: flex;
@@ -23,7 +26,7 @@
   transition: all 0.3s ease-out;
   top: 0;
   bottom: 0;
-  left: -15vw;
+  left: -17vw;
   width: 15vw;
   background-color: white;
   padding: 1vw 1vw;
@@ -33,8 +36,6 @@
   
 .dropdown a {
   overflow: auto;
-  /* font-size: 15px;
-  padding: 1vh; */
 }
   
 .menuToggler {
@@ -130,7 +131,7 @@
 }
   
 .navbar {
-  font-size: 13px;
+  font-size: calc(13px + 1vh);
   display: flex;
   justify-content: space-around;
   padding: 1em;
@@ -144,6 +145,7 @@
   color: aliceblue;
 }
   
+/* Home */
 .intro {
   padding: 2em;
   background-color: #4361ee;
@@ -159,6 +161,8 @@
   background-color: #4361ee;
   color: aliceblue;
 }
+
+/* Quiz App */
 
 header{
   text-align: center;
@@ -187,6 +191,7 @@ header{
 
 .questions{
   font-weight: bold;
+  color: #f2f7f2;
   text-align: center;
   align-content: space-around;
   padding: 1.2em 0.5em;
@@ -195,7 +200,7 @@ header{
 
 .answers {
   display: flex;
-  background-color: honeydew;
+  background-color: aliceblue;
   text-align:left;
   justify-content: center;
 }
@@ -215,7 +220,157 @@ header{
   margin-top: 1.5em;
 }
 
+/* Todo List */
+
+.todoHead{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1.4em auto;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: calc(14px + 2vw);
+}
+
+form {
+  text-align: left;
+  max-width: 100%;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todoInput{
+  margin: 2vw auto;
+  border: 2px solid;
+  border-radius: 0.5em;
+  height: 35px;
+  width: 50%;
+  text-align: center;
+}
+
+.todos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style-type: none;
+  text-align: center;
+}
+
+.todos li{
+  background-color: #f4f1de;
+  border: 2px solid #4361ee;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.add{
+  margin: 0 auto;
+  margin-bottom: 1em;
+  border: 2px solid;
+  border-radius: 0.5em;
+  /* width: 120px; */
+  height: 30px;
+}
+
+.rmv{
+  padding: 3px;
+  background-position-y: bottom;
+}
+
+footer {
+  margin: 3em auto;
+  text-align: center;
+  font-size: xx-small;
+  font-weight: bold;
+  color: #ff6d00;
+}
+
+/* Weather API */
+
+.weatherlist {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 1em;
+}
+
+.weather {
+  border-radius: 10px;
+  padding: 1.4vh;
+  font-size: calc(10px + 1vh);
+  align-items: center;
+  text-align: center;
+  background-color: #1c2d75;
+  color: azure;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.next {
+  display: flex;
+  margin: 10px auto;
+  align-items: center;
+  gap: 5px;
+  border-radius: 10px;
+  padding: 1vh;
+  font-size: calc(8px + 1vh);
+  background-color: #44d2eb;
+  color: azure;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  width: 85%;
+}
+
+.time,
+.city {
+  font-size: calc(5px + 1vh);
+}
+
+.nexttable {
+  padding: 5px;
+  background-color: ivory;
+  color: #0e509c;
+  border-radius: 6px;
+  width: 90%;
+}
+
+.inp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 3em;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0e509c;
+  border-radius: 6px;
+  width: 45vw;
+}
+
+.iconimg {
+  background-color: rgb(77, 161, 194);
+  border-radius: 50%;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;  
+  text-align: center;
+  align-items: center;
+}
+
+.info .weather{
+  width: 200px;
+}
+
 @media screen and (min-width:10px) {
+  /* Navbar */
   .menuToggler,.hamburger,.hamburger::before,.hamburger::after {
     min-width: 20px;
   }
@@ -247,41 +402,25 @@ header{
   .navbar{
     display: none;
   }
+/* Home */
+  .placement{
+    align-content: center;
+    justify-content: center;
+  }
+  
+  .leftwork{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .leftwork img{
+    width: 90%;
+    border-radius: 1em;
+  }
 }
 
 @media screen and (min-width:280px) {
-/* Navbar */
-.menuToggler,.hamburger,.hamburger::before,.hamburger::after {
-    min-width: 20px;
-  }
 
-.hamburger,.hamburger::before,.hamburger::after {
-    height: 2px;
-  }
-
-  .header {
-    height: 5vh;
-    padding: 3vw;
-  }
-
-  .hamburger::after {
-    transform: translateY(0.7vh);
-  }
-  .hamburger::before {
-    transform: translateY(-0.7vh);
-  }
-
-  .menuToggler {
-    min-height: 50px;
-  }
-
-  .header {
-    border-bottom: 0.2vw solid aliceblue;
-  }
-
-  .navbar{
-    display: none;
-  }
   /* Home */
   .intro{
     padding: 1em 2em;
@@ -363,7 +502,7 @@ header{
   
   .leftwork img{
     border-radius: 1em;
-    width: 100%;
+    width: 90%;
   }
 
   .rightwork{
@@ -385,7 +524,7 @@ header{
   }
   
   .navbar{
-    font-size: 2vw;
+    font-size: calc(13px + 1vh);
   }
 
   /* Quiz App */
@@ -413,6 +552,10 @@ header{
     width: 70%;
   }
   
+  .instructions{
+    text-align: center;
+    width: 60%;
+  }
 }
 
 @media screen and (min-width:550px) {
