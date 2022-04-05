@@ -1,19 +1,3 @@
-const menu = document.querySelector(".menuToggler");
-const drop = document.querySelector(".dropdown");
-let menuopen = false;
-menu.addEventListener("click", () => {
-  console.log("click");
-  if (!menuopen) {
-    menu.classList.add("open");
-    drop.classList.add("open");
-    menuopen = true;
-  } else {
-    menu.classList.remove("open");
-    drop.classList.remove("open");
-    menuopen = false;
-  }
-});
-
 const API_KEY = `36c723e0df7396aa47e5641ac1ab99f1`;
 
 let cityname = "";
@@ -23,7 +7,8 @@ const iconImg = document.querySelector(".iconimg");
 const temp = document.querySelector(".temp");
 const descript = document.querySelector(".description");
 const windSpeed = document.querySelector(".wind");
-const citynameInput = document.querySelector("input");
+let citynameInput = document.querySelector("input");
+const findButton = document.getElementById('finder');
 
 async function loadAPI(cityname) {
   const URL = `http://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${API_KEY}`;
@@ -31,7 +16,7 @@ async function loadAPI(cityname) {
   return response.json();
 }
 
-async function getData() {
+async function getData(cityname) {
   const obj = await loadAPI(cityname);
   const desc = obj.weather[0].description;
   const temperature = obj.main.temp - 273.15;
@@ -39,17 +24,8 @@ async function getData() {
   const wind = obj.wind.speed;
   const time = convertToTime(obj.dt);
   const icon = obj.weather[0].icon;
-  console.log(desc, tempInCelsius, wind, time, icon);
 
-  addWeatherCard(
-    time,
-    cityname,
-    `http://openweathermap.org/img/wn/${icon}.png`,
-    `${tempInCelsius}\xB0C`,
-    desc,
-    Math.round(wind * 3.6),
-  );
-  // return (desc, tempInCelsius, wind, time, icon);
+  addWeatherCard(time, cityname, `http://openweathermap.org/img/wn/${icon}.png`, `${tempInCelsius}\xB0C`, desc, Math.round(wind * 3.6));
 }
 
 function convertToTime(totalSeconds) {
@@ -66,7 +42,7 @@ function convertToTime(totalSeconds) {
 async function addWeatherCard(time, city, src, temp, desc, wind) {
   const cards = document.getElementsByClassName("weatherlist");
 
-  const { dateTom, tomTemp, dateTomPlus1, tomPlus1Temp } = await forTommorrow();
+  const { dateTom, tomTemp, dateTomPlus1, tomPlus1Temp } = await forTommorrow(city);
 
   const card = document.createElement("div");
   card.className = "weather";
@@ -80,40 +56,35 @@ async function addWeatherCard(time, city, src, temp, desc, wind) {
   <div class="next">
     <div class="nexttable">
       <h6>${dateTom}</h6>
-      <p>${tomTemp}</p>
+      <p>${tomTemp}\xB0C</p>
     </div>
     <div class="nexttable">
       <h6>${dateTomPlus1}</h6>
-      <p>${tomPlus1Temp}</p>
+      <p>${tomPlus1Temp}\xB0C</p>
     </div>
-  </div> 
-  `;
+  </div>`;
   cards[0].appendChild(card);
 }
 
-citynameInput.addEventListener("change", () => {
+findButton.addEventListener("click", () => {
   cityname = citynameInput.value;
-  getData();
+  getData(cityname);
 });
 
-async function getForTommorrow() {
+async function getForTommorrow(cityname) {
   const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${API_KEY}`;
   const response = await fetch(URL);
   return response.json();
 }
 
-async function forTommorrow() {
-  const res = await getForTommorrow();
+async function forTommorrow(cityname) {
+  const res = await getForTommorrow(cityname);
 
   let dttxtTom = res.list[1].dt_txt;
   let dttxtTomPlus1 = res.list[2].dt_txt;
-  console.log(dttxtTomPlus1, dttxtTom);
-  let dateTom = dttxtTom
-    .split(" ")[1]
-    .substring(dttxtTom.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length-3);
-  let dateTomPlus1 = dttxtTomPlus1
-    .split(" ")[1]
-    .substring(dttxtTomPlus1.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length-3);
+
+  let dateTom = dttxtTom.split(" ")[1].substring(dttxtTom.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length - 3);
+  let dateTomPlus1 = dttxtTomPlus1.split(" ")[1].substring(dttxtTomPlus1.split(" ")[1].indexOf("-") + 1, dttxtTom.split(" ")[1].length - 3);
 
   let tomTemp = Math.ceil(Number(res.list[0].main.temp) - 273.15);
   let tomPlus1Temp = Math.ceil(res.list[1].main.temp - 273.15);
