@@ -1,4 +1,11 @@
-/*  */
+/* To make navigation for induvidual page styles easier, few comments have been made.
+   You can use the Find option (Ctrl + F) in your text editor and navigate to individual sections.
+   1. Navbar
+   2. Home
+   3. Quiz App
+   4. Weather API
+   This was done on suggestion to have reusable(use only once) code.
+*/
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 * {
@@ -274,13 +281,7 @@ form {
   margin-bottom: 1em;
   border: 2px solid;
   border-radius: 0.5em;
-  /* width: 120px; */
   height: 30px;
-}
-
-.rmv{
-  padding: 3px;
-  background-position-y: bottom;
 }
 
 footer {
@@ -289,7 +290,7 @@ footer {
   font-size: xx-small;
   font-weight: bold;
   color: #ff6d00;
-}
+} 
 
 /* Weather API */
 
@@ -350,6 +351,7 @@ footer {
   border: 2px solid #0e509c;
   border-radius: 6px;
   width: 45vw;
+  padding: 0.4em;
 }
 
 .iconimg {
@@ -479,7 +481,7 @@ footer {
 
   .right li{
     text-align: left;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .placement h1{
@@ -507,7 +509,7 @@ footer {
 
   .rightwork{
     width: 100%;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .rightwork h5{
@@ -539,6 +541,10 @@ footer {
     justify-content: flex-start;
     padding: 1em;
   }
+
+  .inp{
+    width: 75vw;
+  }
 }
 
 @media screen and (min-width:460px) {
@@ -556,6 +562,10 @@ footer {
     text-align: center;
     width: 60%;
   }
+  
+  .inp{
+    width: 55vw;
+  }
 }
 
 @media screen and (min-width:550px) {
@@ -570,6 +580,10 @@ footer {
   .dropdown{
     display: none;
   }  
+
+  .inp{
+    width: 400px;
+  }
 }
 
 @media screen and (min-width:800px) {
