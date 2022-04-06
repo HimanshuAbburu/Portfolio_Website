@@ -1,26 +1,25 @@
-# CTEC3905 ASSIGNMENT
+# Portfolio website
 
-Welcome. This is your assignment repository.
+This is a portfolio website. It is been developed by using HTML5, CSS5, JavaScript (ES6) and Git version control (pushed to a repository on GitHub). It comprises of 4 different pages, which are navigable between. The four pages are home page, Quiz App page, To-Do List page and Weather API page.
 
-In this file, we will expect a brief description of your project in [markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) format.
-Try to keep it to a maximum of about 300 words.
-Though shorter is no problem.
+## Home Page
+It is a short introduction about me and what I enjoy. It also contains a section about my education and work experience during my placement year.
 
-The description should include a summary of your site content and the primary audience you are targeting.
-Also include a brief description of how you have organised the content (a few sentences is fine) for the audience.
-Make some specific reference to how you have adapted your site for different screen sizes.
+## Quiz App
+It is an application developed to test the knowledge based on Marvel Cinematic Universe. Questions are displayed at the top of the container. Options are displayed below. For every question, an option is to be selected and then click the Submit button. After all the 5 questions are answered, a total mark will be displayed below the submit button.
 
-If there are any parts of your code or user interface that need further explanation, you can include that here.
-If anything is broken or doesn't quite work properly, you may explain what it SHOULD do.
+## To-do List
+This application is developed to store tasks as an alternative to sticky notes. You can enter the task in the text box and click add. It will dynamically add itself to the UI. It will also be stored in the local storage. So, even if you reload the website, the previous tasks can be seen. To strike off a task, left-click. To remove a task, right-click.
 
-You **must** include references (including links) to any external resources/videos/code examples that you have used here.
+## Weather API
+This application shows the weather in a location asked for. The name of the location has to be entered in the textbox. Not all locations are available, and make sure to enter correct spellings.
 
-## Things to do
 
-- Replace the content inside [index.html](index.html) with your own structured HTML.
-- Replace the [replaceme.css](replaceme.css) and [replaceme.js](js/replaceme.js) files with your own files.
-- Update the `<link>` and `<script>` elements to point to your new files.
-- Replace the contents of this file (readme.md) with your own short project description as detailed above.
+### Screen Sizes
+10px, 280px, 460px, 550px and 800px.
 
->We don't expect there to be much left of the original content in these files once you are done.
-It should be all your own code.
+## References
+1.	Quiz app idea - https://www.webtips.dev/100-javascript-project-ideas
+2.	calc font-option in CSS - https://codepen.io/csuwildcat/pen/qOqVNO 
+3.	To-D oList idea - https://www.webtips.dev/100-javascript-project-ideas
+4.	Weather API idea – lecture slide 9
