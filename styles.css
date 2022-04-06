@@ -169,6 +169,16 @@
   color: aliceblue;
 }
 
+.contact{
+  margin: 1em;
+  text-align: center;
+}
+
+.contact>a{
+  justify-content: space-evenly;
+  margin: 1.2vh 15px;
+}
+
 /* Quiz App */
 
 header{
@@ -481,7 +491,7 @@ footer {
 
   .right li{
     text-align: left;
-    font-size: 13px;
+    font-size: calc(12px + 1vh);
   }
 
   .placement h1{
@@ -509,7 +519,7 @@ footer {
 
   .rightwork{
     width: 100%;
-    font-size: 13px;
+    font-size: calc(12px + 1vh);
   }
 
   .rightwork h5{
