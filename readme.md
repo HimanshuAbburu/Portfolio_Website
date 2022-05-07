@@ -15,11 +15,4 @@ This application is developed to store tasks as an alternative to sticky notes. 
 This application shows the weather in a location asked for. The name of the location has to be entered in the textbox. Not all locations are available, and make sure to enter correct spellings.
 
 
-### Screen Sizes
-10px, 280px, 460px, 550px and 800px.
 
-## References
-1.	Quiz app idea - https://www.webtips.dev/100-javascript-project-ideas
-2.	calc font-option in CSS - https://codepen.io/csuwildcat/pen/qOqVNO 
-3.	To-D oList idea - https://www.webtips.dev/100-javascript-project-ideas
-4.	Weather API idea – lecture slide 9
