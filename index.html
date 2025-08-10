@@ -2,90 +2,1291 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Himanshu Abburu · Portfolio</title>
+    <meta
+      name="description"
+      content="Minimal, modular portfolio for Himanshu Abburu - backend & integration developer across Spring Boot, Python, AWS, and Azure."
+    />
+
+    <!-- Colors & theming -->
+    <meta
+      name="theme-color"
+      content="#111827"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <style>
+      /* =======================
+       Minimal Design System
+       ======================= */
+      :root {
+        --bg: #ffffff;
+        --fg: #0f172a;
+        /* slate-900 */
+        --muted: #475569;
+        /* slate-600 */
+        --line: #e2e8f0;
+        /* slate-200 */
+        --accent: #0ea5e9;
+        /* cyan-500 */
+        --accent-2: #22d3ee;
+        /* cyan-400 */
+        --radius: 14px;
+        --pad: clamp(14px, 1.8vw, 22px);
+        --gap: clamp(16px, 2.2vw, 28px);
+        --max: 1024px;
+        --nav-h: 64px;
+        --proj-card-h-mobile: clamp(440px, 78vh, 600px);
+
+        /* Fluid type scale */
+        --t-1: clamp(0.92rem, 0.86rem + 0.35vw, 1.05rem);
+        --t0: clamp(1.05rem, 1rem + 0.45vw, 1.15rem);
+        --t1: clamp(1.25rem, 1.1rem + 0.9vw, 1.5rem);
+        --t2: clamp(1.55rem, 1.25rem + 1.4vw, 1.9rem);
+        --t3: clamp(2rem, 1.5rem + 2.2vw, 2.6rem);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1220;
+          /* deep navy */
+          --fg: #e5e7eb;
+          /* light text */
+          --muted: #9aa4b2;
+          /* soft grey */
+          --line: #1f2937;
+          /* divider */
+          --accent: #38bdf8;
+          --accent-2: #67e8f9;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      html:focus-within {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter,
+          Roboto, "Helvetica Neue", Arial;
+        color: var(--fg);
+        background: radial-gradient(
+            700px 400px at 110% -10%,
+            color-mix(in oklab, var(--accent), transparent 92%),
+            transparent
+          ),
+          radial-gradient(
+            700px 400px at -10% 0%,
+            color-mix(in oklab, var(--accent-2), transparent 94%),
+            transparent
+          ),
+          var(--bg);
+        line-height: 1.6;
+        padding-top: var(--nav-h);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      :focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), white 20%);
+        border-radius: 10px;
+      }
+
+      .container {
+        width: min(calc(100% - 2 * var(--pad)), var(--max));
+        margin-inline: auto;
+      }
+
+      .stack > * + * {
+        margin-top: var(--gap);
+      }
+
+      .cluster {
+        display: flex;
+        align-items: center;
+        gap: var(--gap);
+        flex-wrap: wrap;
+      }
+
+      .grid {
+        display: grid;
+        gap: var(--gap);
+      }
+
+      .list-plain {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav.inner {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        font-size: var(--t1);
+      }
+
+      nav.inner .brand {
+        flex: 0 0 auto;
+      }
+
+      .nav a {
+        padding: 0.5rem 0.8rem;
+        border-radius: 10px;
+      }
+
+      .nav a[aria-current="page"],
+      .nav a:hover {
+        text-decoration: none;
+        background: color-mix(in oklab, var(--accent), transparent 90%);
+      }
+
+      .nav {
+        display: flex;
+        gap: 0.6rem;
+        flex: 1 1 auto; /* allow it to shrink */
+        min-width: 0; /* <-- critical so it can actually shrink */
+        overflow-x: auto; /* horizontal scroll when needed */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+      }
+      .nav::-webkit-scrollbar {
+        display: none;
+      } /* WebKit */
+      .nav a {
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
+      /* Always-flexible nav + horizontal scroll when needed */
+      nav.inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+      }
+      .nav {
+        display: flex;
+        gap: 0.6rem;
+        flex: 1 1 auto; /* allow the links row to shrink */
+        min-width: 0; /* critical so it can actually shrink */
+        overflow-x: auto; /* scroll if it still doesn't fit */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav a {
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
+      /* Wrap links onto a second line under the logo on medium screens */
+      @media (max-width: 1024px) {
+        nav.inner {
+          flex-wrap: wrap;
+          row-gap: 0.4rem;
+        }
+        .nav {
+          order: 2;
+          flex-basis: 100%;
+        }
+        .nav a {
+          padding: 0.4rem 0.6rem;
+        } /* tighter padding helps fit */
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        padding: 0.38rem 0.7rem;
+        border-radius: 999px;
+        font-size: var(--t-1);
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: calc(var(--pad) * 1.2);
+        background: color-mix(in oklab, var(--bg), white 0%);
+      }
+
+      .hero {
+        padding: clamp(28px, 6vh, 72px) 0 clamp(24px, 5vh, 56px);
+      }
+
+      .hero .stack {
+        gap: clamp(6px, 1.2vh, 12px);
+      }
+
+      .hero h1 {
+        font-size: var(--t3);
+        line-height: 1.1;
+        margin: 0;
+        letter-spacing: -0.02em;
+        margin-top: clamp(18px, 3.2vh, 44px);
+      }
+
+      .hero .lead {
+        font-size: var(--t1);
+        max-width: 62ch;
+      }
+
+      section {
+        padding: calc(var(--gap) * 2) 0;
+        scroll-margin-top: var(--nav-h);
+      }
+
+      section header h2 {
+        font-size: var(--t2);
+        margin: 0;
+      }
+
+      .projects {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: calc(var(--gap) * 1.25);
+      }
+
+      .project-card .media {
+        margin: 0;
+        border-radius: calc(var(--radius) - 2px);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: color-mix(in oklab, var(--bg), white 6%);
+        aspect-ratio: 16 / 10;
+      }
+
+      .project-card .cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translateZ(0);
+        transition: transform 0.35s ease;
+      }
+
+      .project-card:hover .cover {
+        transform: scale(1.02);
+      }
+
+      .skills {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      footer {
+        padding: calc(var(--gap) * 2) 0;
+        border-top: 1px solid var(--line);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .form {
+        display: grid;
+        gap: var(--gap);
+      }
+
+      .form .row {
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 720px) {
+        .form .row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: var(--t-1);
+      }
+
+      .control {
+        width: 100%;
+        font: inherit;
+        padding: 0.9rem 1rem;
+        color: var(--fg);
+        background: color-mix(in oklab, var(--bg), white 0%);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+
+      .control::placeholder {
+        color: color-mix(in oklab, var(--muted), white 10%);
+      }
+
+      .kicker {
+        font-size: var(--t-1);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .desc {
+        font-size: var(--t0);
+        color: var(--fg);
+      }
+
+      .explain {
+        font-size: var(--t-1);
+        color: var(--muted);
+      }
+
+      .rule {
+        height: 1px;
+        background: var(--line);
+        border: 0;
+      }
+
+      .progress-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+      }
+
+      .progress {
+        height: 100%;
+        width: 0%;
+        background: var(--accent);
+      }
+
+      header.site {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        backdrop-filter: saturate(130%) blur(8px);
+        background: color-mix(in oklab, var(--bg), transparent 30%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      nav.inner {
+        position: relative;
+      }
+
+      .progress-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        pointer-events: none;
+      }
+
+      .progress {
+        height: 100%;
+        width: 0%;
+        background: var(--accent);
+      }
+
+      .carousel {
+        position: relative;
+      }
+
+      .carousel-viewport {
+        display: flex;
+        gap: var(--gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: var(--pad);
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .carousel-viewport::-webkit-scrollbar {
+        display: none;
+      }
+
+      .slide {
+        scroll-snap-align: start;
+        flex: 0 0 min(92%, 540px);
+      }
+
+      @media (min-width: 900px) {
+        .slide {
+          flex-basis: 520px;
+        }
+      }
+
+      .dots {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .dots button {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: 0;
+        padding: 0;
+        background: var(--line);
+      }
+
+      .dots button[aria-selected="true"] {
+        background: var(--accent);
+        width: 22px;
+      }
+
+      /* --- Mobile card equal-height + tidy content --- */
+      :root {
+        --proj-card-h-mobile: clamp(440px, 78vh, 600px);
+      }
+
+      .slide {
+        display: flex;
+      }
+
+      /* allow card to stretch to slide */
+      .project-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* keep the preview image consistent */
+      .project-card .media {
+        aspect-ratio: 16 / 10;
+      }
+
+      /* let the “links” row sit at the bottom */
+      .project-card [data-role="links"] {
+        margin-top: auto;
+      }
+
+      /* clamp text on small screens so heights match */
+      @media (max-width: 640px) {
+        .slide {
+          height: var(--proj-card-h-mobile);
+        }
+
+        .project-card {
+          height: 100%;
+        }
+
+        .project-card .desc,
+        .project-card .explain {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .project-card .desc {
+          -webkit-line-clamp: 3;
+        }
+
+        /* ~3 lines */
+        .project-card .explain {
+          -webkit-line-clamp: 2;
+        }
+
+        /* ~2 lines */
+        .project-card [data-role="tags"] {
+          max-height: 56px;
+          overflow: hidden;
+        }
+
+        /* nav: keep it usable on narrow widths */
+        nav.inner {
+          flex-wrap: wrap;
+          row-gap: 0.4rem;
+        }
+
+        .nav {
+          display: flex;
+          gap: 0.4rem;
+          overflow-x: auto;
+        }
+
+        .nav a {
+          white-space: nowrap;
+        }
+
+        .nav::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      @media (max-width: 900px) {
+        nav.inner {
+          flex-wrap: wrap;
+          row-gap: 0.4rem;
+        }
+      }
+
+      /* slightly bigger tap targets for carousel on touch screens */
+      @media (pointer: coarse) {
+        #proj-prev,
+        #proj-next {
+          padding: 0.55rem 0.9rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div class="header">
-      <div class="menuToggler">
-        <div class="hamburger"></div>
-      </div>
-    </div>
-    <nav class="navbar">
-      <a href="./index.html">Home</a>
-      <a href="./Quiz-App.html" >Quiz App</a>
-      <a href="./ToDo-List.html">To-Do List</a>
-      <a href="./weather-API.html">Weather API</a>
-    </nav>
+    <a
+      class="pill"
+      href="#content"
+      style="position: absolute; left: -1000px; top: 6px"
+      >Skip to content</a
+    >
 
-    <div class="dropdown">
-      <a href="./index.html" class="nav"><i class="bx bxs-home-circle"></i>Home</a>
-      <a href="./Quiz-App.html" class="nav"><i class="bx bxs-briefcase-alt-2"></i>Quiz App</a>
-      <a href="./ToDo-List.html" class="nav" ><i class="bx bxs-briefcase-alt-2"></i>To-Do List</a>
-      <a href="./weather-API.html" class="nav" ><i class="bx bxs-briefcase-alt-2"></i>Weather API</a>
-    </div>
+    <header class="site">
+      <div class="container">
+        <nav class="inner" aria-label="Primary">
+          <a class="brand" href="#">Himanshu</a>
+          <div class="nav" role="menubar">
+            <a role="menuitem" href="#about">About</a>
+            <a role="menuitem" href="#experience">Experience</a>
+            <a role="menuitem" href="#skills">Skills</a>
+            <a role="menuitem" href="#projects">Projects</a>
+            <a role="menuitem" href="#learning">Certificates</a>
+          </div>
+          <div class="progress-wrap" aria-hidden="true">
+            <div class="progress" id="scroll-progress"></div>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-    <section class="intro">
-      <h3>Hi! I am Himanshu.</h3>
-      <h1>Software Developer</h1>
-      <p>Final year BSc (Hons) Computer Science student.</p>
-      <p>Eager to learn and apply the skills to solve problems.</p>
-    </section>
-
-    <div class="edu">
-      <h1>Education</h1>
-      <div class="educontainer">
-        <div class="left">
-          <img class="leftimg" src="https://www.dmu.ac.uk/SiteElements/2018/Images/logo.svg" alt="DMULogo"/>
+    <main id="content">
+      <!-- Hero / About -->
+      <section id="about" class="hero">
+        <div class="container">
+          <div class="stack">
+            <span class="pill">Backend · Cloud</span>
+            <h1>Himanshu Abburu</h1>
+            <p class="lead muted">
+              Software Engineer with 3+ years in backend development (Spring
+              Boot, Node.js, Python, AWS). Proven ability to deliver results
+              fast, even with new or unfamiliar tools. Skilled in API design,
+              problem-solving, and building cost-efficient solutions that meet
+              both business and technical goals.
+            </p>
+            <div class="cluster">
+              <a class="pill" href="tel:+447983876715">+44 7983 876715</a>
+              <a class="pill" href="mailto:himanshuabburu@gmail.com"
+                >himanshuabburu@gmail.com</a
+              >
+              <a
+                class="pill"
+                href="http://www.linkedin.com/in/himanshuabburu"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+              <a
+                class="pill"
+                href="https://github.com/HimanshuAbburu"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                class="pill"
+                href="https://himanshu-abburu.netlify.app/"
+                target="_blank"
+                rel="noopener"
+                >Portfolio</a
+              >
+            </div>
+          </div>
         </div>
-        <div class="right">
-          <h2>Second Year</h2>
-          <h3>Term 2</h3>
-          <ul>
-            <li>Object-Oriented Development (82%), Agile Team Development (96%), Introduction to Research (82%), Concurrent and Parallel Algorithms (77%).</li>
-          </ul>
-          <h3>Term 1</h3>
-          <ul>
-            <li>Object-Oriented Design (74%), Data Structures and Algorithms (96.2%), Software and Security Management (93.75%), Web App Development (63%).</li>
-          </ul>
-          <h2>First Year</h2>
-          <h3>Term 2</h3>
-          <ul>
-            <li>Computer Programming – II (86%), Database Design and Implementation (75%), Computer Systems (75%), Computer Law and Cybersecurity (55%).</li>
-          </ul>
-          <h3>Term 1</h3>
-          <ul>
-            <li>First Year - Term1: Computer Programming – I (93%), Mathematics for Computing (87%), Computer Networks (50%), Computer Ethics (50%).</li>
-          </ul>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" aria-labelledby="exp-h2">
+        <div class="container stack">
+          <header class="stack">
+            <h2 id="exp-h2">Experience</h2>
+            <p class="muted">Highlights from recent roles.</p>
+          </header>
+          <div class="stack" id="exp-list"></div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" aria-labelledby="skills-h2">
+        <div class="container stack">
+          <header class="stack">
+            <h2 id="skills-h2">Skills</h2>
+            <p class="muted">
+              Languages, frameworks, cloud, and DevOps I use most.
+            </p>
+          </header>
+          <div class="grid skills" id="skills-grid"></div>
+        </div>
+      </section>
+      <!-- Projects -->
+      <section id="projects" aria-labelledby="projects-h2">
+        <div class="container stack">
+          <header class="stack">
+            <h2 id="projects-h2">Personal Projects</h2>
+            <p class="muted">Concrete work with measurable impact.</p>
+          </header>
+
+          <div class="carousel" id="projects-carousel">
+            <div
+              class="carousel-viewport"
+              id="projects-track"
+              tabindex="0"
+              aria-live="polite"
+            ></div>
+            <div
+              class="carousel-controls cluster"
+              style="justify-content: space-between; align-items: center"
+            >
+              <button class="pill" id="proj-prev" aria-label="Previous">
+                ‹
+              </button>
+              <div
+                class="dots"
+                id="proj-dots"
+                role="tablist"
+                aria-label="Project slides"
+              ></div>
+              <button class="pill" id="proj-next" aria-label="Next">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education & Certifications -->
+      <section id="learning" aria-labelledby="learn-h2">
+        <div class="container stack">
+          <header class="stack">
+            <h2 id="learn-h2">Education & Certifications</h2>
+          </header>
+          <div class="grid" id="edu-cert"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container cluster" style="justify-content: space-between">
+        <small class="muted"><span id="year"></span> Himanshu Abburu</small>
+        <div class="cluster">
+          <a
+            class="pill"
+            href="http://www.linkedin.com/in/himanshuabburu"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            class="pill"
+            href="https://github.com/HimanshuAbburu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a class="pill" href="mailto:himanshuabburu@gmail.com">Email</a>
         </div>
       </div>
-    </div>
-    <div class="placement">
-      <h1>Work Experince</h1>
-      <div class="workcontainer">
-        <div class="leftwork">
-          <img src="./images/rexroth.png" alt="Rexroth Logo"/>
+    </footer>
+
+    <!-- ===== Templates (Modular) ===== -->
+    <template id="tpl-project">
+      <article class="card stack project-card" style="gap: 0.9rem">
+        <figure class="media">
+          <img
+            class="cover"
+            data-role="cover"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <header class="stack" style="gap: 0.25rem">
+          <small class="kicker" data-role="kicker"></small>
+          <h3 style="margin: 0; font-size: var(--t1)" data-role="title"></h3>
+        </header>
+
+        <p class="desc" data-role="desc"></p>
+        <div class="rule" data-role="divider"></div>
+        <p class="explain" data-role="explain"></p>
+
+        <ul
+          class="list-plain cluster"
+          data-role="tags"
+          style="gap: 0.45rem; flex-wrap: wrap"
+        ></ul>
+        <div
+          class="cluster"
+          data-role="links"
+          style="gap: 0.5rem; flex-wrap: wrap"
+        ></div>
+      </article>
+    </template>
+
+    <template id="tpl-skill">
+      <article class="card stack" style="gap: 0.6rem">
+        <div
+          class="cluster"
+          style="justify-content: space-between; align-items: center"
+        >
+          <h3 style="margin: 0; font-size: var(--t1)"></h3>
+          <span class="pill" data-role="label"></span>
         </div>
-        <div class="rightwork">
-          <h5>Aug 2020 - Aug 2021</h5>
-            <ul>
-              <li>-> Updated and maintained in-house software applications that supported the flow of the key departments in the orgaisation.</li>
-              <li>-> Worked with MATLAB, SQL Server, Java, HTML, CSS, JavaScript.</li>
-              <li>-> Performed ETL functions.</li>
-              <li>-> Worked with cross functional teams to resolve bugs and IT issues.</li>
-              <li>-> Followed agile principles before releasing stable versions of the applications.</li>
-            </ul>
+        <div
+          class="cluster"
+          data-role="items"
+          style="gap: 0.4rem; flex-wrap: wrap"
+        ></div>
+      </article>
+    </template>
+
+    <template id="tpl-exp">
+      <article class="card stack" style="gap: 0.6rem">
+        <div
+          class="cluster"
+          style="justify-content: space-between; align-items: flex-start"
+        >
+          <div>
+            <h3 style="margin: 0.1rem 0 0" data-role="role"></h3>
+            <div class="muted" data-role="company"></div>
+          </div>
+          <span class="pill" data-role="dates"></span>
         </div>
-      </div>
-    </div>
-    <div class="contact">
-      <h2>Contact</h2>
-      <a href="https://www.linkedin.com/in/himanshuabburu"><img src="./images/linkedin.png" alt="LinkedinLogo"> Linkedin</a>
-      <a href="https://github.com/HimanshuAbburu"><img src="./images/github.png" alt="GitHubLogo"> GitHub</a>
-    </div>
-    <script src="./js/app.js"></script>
+        <ul
+          class="stack"
+          data-role="bullets"
+          style="margin: 0; padding-left: 1rem"
+        ></ul>
+      </article>
+    </template>
+
+    <template id="tpl-edu">
+      <article class="card stack" style="gap: 0.5rem">
+        <h3 style="margin: 0" data-role="title"></h3>
+        <div class="muted" data-role="place"></div>
+        <ul data-role="list" style="margin: 0; padding-left: 1.1rem"></ul>
+      </article>
+    </template>
+
+    <script type="module">
+      // ========= Content from CV =========
+      // Keep it modular and editable
+      const DATA = {
+        about: {
+          name: "Himanshu Abburu",
+          summary:
+            "Software Engineer with 3+ years in backend, integrations, and cloud. Designed and implemented APIs to optimize financial operations; known for converting problems into solutions and driving cost‑efficient outcomes.",
+        },
+        links: {
+          phone: "+44 7983876715",
+          email: "himanshuabburu@gmail.com",
+          linkedin: "http://www.linkedin.com/in/himanshuabburu",
+          github: "https://github.com/HimanshuAbburu",
+          portfolio: "https://himanshu-abburu.netlify.app/",
+        },
+        projects: [
+          {
+            title: "Humble Donations Charity Website",
+            subtitle: "Full-stack marketplace",
+            desc: "Charity website, similar to Amazon's business model.",
+            explain:
+              "A feature-rich platform for exchange of goods integrating real-time database functionality and seamless user authentication; Aimed at simplifying account management tasks including new registrations or donations with a focus on achieving zero downtime through peak hours.",
+            tags: ["Node.js", "React", "Express", "MongoDB", "Firebase"],
+            code: "https://github.com/HimanshuAbburu/HumbleDonations_Frontend",
+            demo: "https://humbledonations.netlify.app/",
+          },
+          {
+            title: "Movie Recommendation Application",
+            subtitle: "Content-based engine",
+            desc: "Fast recommendations using vectorized similarity.",
+            explain:
+              "Recommendation engine leveraging content-based filtering algorithms to provide personalized movie suggestions with 70% accuracy; Optimized data processing workflows using the Pandas library to ensure real-time responsiveness.",
+            tags: ["Python", "Pandas", "NumPy"],
+            code: "https://github.com/HimanshuAbburu/Movie-Recommender",
+            demo: "https://github.com/HimanshuAbburu/Movie-Recommender",
+          },
+          {
+            title: "Organics Dataset Analysis",
+            subtitle: "Data mining",
+            desc: "Insights from classical ML for targeting and CLV.",
+            explain:
+              "Applied regression models, decision trees, and neural networks to analyse large-scale datasets and identify high-value customer segments with a 95% confidence level. Presented insights to business stakeholders using data visualization techniques, enabling informed marketing strategies and decision-making.",
+            tags: ["SAS Enterprise Miner", "ML", "Analytics"],
+            code: "https://github.com/HimanshuAbburu/Organics-Dataset-Data-Mining",
+          },
+        ],
+        skills: [
+          {
+            area: "Languages",
+            label: "Programming languages",
+            items: ["Java", "JavaScript", "Python", "Node.js"],
+          },
+          {
+            area: "Frameworks",
+            label: "Backend & UI",
+            items: ["Spring Boot", "Express.js", "React"],
+          },
+          {
+            area: "Cloud",
+            label: "Platforms",
+            items: [
+              "AWS (Lambda, S3)",
+              "Azure (Logic Apps, APIM, SQL)",
+              "Firebase SDK",
+            ],
+          },
+          {
+            area: "Databases",
+            label: "Storage",
+            items: ["Azure SQL", "MongoDB", "MySQL"],
+          },
+          {
+            area: "DevOps",
+            label: "CI/CD & IaC",
+            items: [
+              "Git",
+              "Azure DevOps",
+              "AWS CodePipeline",
+              "AWS CodeBuild",
+              "Terraform",
+              "CloudFormation",
+            ],
+          },
+        ],
+        experience: [
+          {
+            role: "Integration Designer & Developer - 2",
+            company: "Glue Reply · London",
+            companyUrl: "https://www.reply.com/glue-reply/en/",
+            dates: "Jul 2023 - Present",
+            bullets: [
+              "Architected and implemented CI/CD using AWS CodeCommit, CodeBuild, CodePipeline, and EventBridge. Assigned role-based access control across AWS infrastructure for a public sector client.",
+              "Created RAG‑based AI assistants for Mulesoft code quality; reduced code review time by ~45%.",
+              "Developed and integrated RESTful APIs for ERP and invoicing systems, streamlining organizational workflows, and reducing manual paperwork by 60%.",
+              "Automated complex operational processes using Azure DevOps pipelines, increasing task efficiency, and eliminating repetitive manual tasks up to 50%.",
+              "Directed the integration of over 40 APIs across nine Azure SQL databases using Azure Logic Apps and API Management to ensure seamless and reliable data synchronization.",
+              "Prototyped modern cloud solutions with AWS Lambda, S3, AWS Transfer Family and Terraform to replace legacy systems.",
+            ],
+          },
+          {
+            role: "Integration Developer & Consultant - 1",
+            company: "Glue Reply · London",
+            companyUrl: "https://www.reply.com/glue-reply/en/",
+            dates: "Aug 2022 - Jul 2023",
+            bullets: [
+              "Spearheaded a comprehensive automation initiative for onboarding processes, reducing onboarding times by 80% and improving team operational efficiency.",
+              "Resolved critical production issues under pressure, preserving stability and minimizing downtime.",
+              "Drove rigorous testing leading to zero post‑deployment errors across delivered integrations.",
+              "Ensured API performance & stakeholder alignment through extensive QA.",
+            ],
+          },
+          {
+            role: "Application Engineering Intern",
+            company: "Bosch Rexroth Ltd. · Glenrothes",
+            companyUrl: "https://www.boschrexroth.com/en/gb/",
+            dates: "Aug 2020 - Aug 2021",
+            bullets: [
+              "Re‑engineered internal tools (MATLAB, JS, HTML, CSS) achieving 100% user adoption.",
+              "Built Java‑based ETL apps to automate aggregation; reduced manual workload by ~70%.",
+              "Improved R&D Test Tracker UX and added data visualization features.",
+              "Created a course management system across 7 departments; streamlined CSV workflows.",
+            ],
+          },
+        ],
+        education: {
+          title: "BSc (Hons) Computer Science - First Class",
+          place: "De Montfort University, Leicester, UK",
+          list: [],
+        },
+        certifications: [
+          {
+            label: "AWS Certified AI Practitioner",
+            url: "https://www.credly.com/badges/02098d6a-803d-4530-8035-1fe658ea5803/linked_in_profile",
+          },
+          {
+            label: "Microsoft Certified: Azure Fundamentals (AZ-900)",
+            url: "https://learn.microsoft.com/en-us/users/himanshuabburu-8565/transcript/drzxt0mlwwr3yl7?source=docs",
+          },
+          {
+            label: "Data Science & Programming Fundamentals",
+            url: "https://www.codecademy.com/profiles/HimanshuAbburu/certificates/5701108f64cd4a02981c161085ccc50e",
+          },
+          {
+            label: "Core Java Certification",
+            url: "https://www.linkedin.com/in/himanshuabburu/details/certifications/",
+          },
+          {
+            label: "McKinsey Forward Program",
+            url: "https://www.credly.com/badges/4f6159ef-84df-4817-857a-ad9b399e857d/linked_in_profile/",
+          },
+        ],
+      };
+
+      // ========= DOM helpers =========
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const el = (t, props = {}, ...kids) => {
+        const n = Object.assign(document.createElement(t), props);
+        kids
+          .flat()
+          .forEach((k) =>
+            n.append(k?.nodeType ? k : document.createTextNode(k)),
+          );
+        return n;
+      };
+
+      const mshot = (url, w = 900) =>
+        `https://s.wordpress.com/mshots/v1/${encodeURIComponent(
+          url,
+        )}?w=${w}&scale=2`;
+
+      // ========= Projects =========
+      const projTpl = document.getElementById("tpl-project");
+      const track = document.getElementById("projects-track");
+      const dotsEl = document.getElementById("proj-dots");
+      const prevBtn = document.getElementById("proj-prev");
+      const nextBtn = document.getElementById("proj-next");
+
+      if (projTpl && track) {
+        track.innerHTML = "";
+        DATA.projects.forEach((p, i) => {
+          const node = projTpl.content.cloneNode(true);
+          const coverEl = node.querySelector('[data-role="cover"]');
+          const kickerEl = node.querySelector('[data-role="kicker"]');
+          const titleEl = node.querySelector('[data-role="title"]');
+          const descEl = node.querySelector('[data-role="desc"]');
+          const explainEl = node.querySelector('[data-role="explain"]');
+          const dividerEl = node.querySelector('[data-role="divider"]');
+          const tagsEl = node.querySelector('[data-role="tags"]');
+          const linksEl = node.querySelector('[data-role="links"]');
+
+          titleEl.textContent = p.title || "";
+          if (p.subtitle) kickerEl.textContent = p.subtitle;
+          else kickerEl.remove();
+          if (p.desc) descEl.textContent = p.desc;
+          else descEl.remove();
+          if (p.explain) {
+            explainEl.textContent = p.explain;
+          } else {
+            explainEl.remove();
+            dividerEl.remove();
+          }
+          (p.tags || []).forEach((t) =>
+            tagsEl.append(el("li", { className: "pill" }, t)),
+          );
+          if (!tagsEl.childElementCount) tagsEl.remove();
+          if (p.code)
+            linksEl.append(
+              el(
+                "a",
+                {
+                  className: "pill",
+                  href: p.code,
+                  target: "_blank",
+                  rel: "noopener",
+                },
+                "Code",
+              ),
+            );
+          if (p.demo)
+            linksEl.append(
+              el(
+                "a",
+                {
+                  className: "pill",
+                  href: p.demo,
+                  target: "_blank",
+                  rel: "noopener",
+                },
+                "Live",
+              ),
+            );
+          if (!linksEl.childElementCount) linksEl.remove();
+
+          const homepage = p.demo || p.code;
+          if (homepage) {
+            coverEl.alt = `${p.title} — homepage preview`;
+            coverEl.src = mshot(homepage, 900);
+            coverEl.srcset = [
+              `${mshot(homepage, 600)} 600w`,
+              `${mshot(homepage, 900)} 900w`,
+              `${mshot(homepage, 1200)} 1200w`,
+            ].join(", ");
+            coverEl.sizes = "(min-width: 900px) 520px, 92vw";
+
+            coverEl.onerror = () => {
+              coverEl.style.opacity = "0.85";
+              coverEl.style.filter = "grayscale(1)";
+            };
+          } else {
+            coverEl.closest(".media").remove();
+          }
+
+          const slide = el("div", { className: "slide" });
+          slide.append(node);
+          track.append(slide);
+
+          const dot = el("button", {
+            type: "button",
+            role: "tab",
+            "aria-label": p.title,
+          });
+          dot.addEventListener("click", () => goTo(i));
+          dotsEl.append(dot);
+        });
+
+        const slides = [...track.children];
+        let active = 0;
+
+        const updateUI = () => {
+          [...dotsEl.children].forEach((b, i) =>
+            b.setAttribute("aria-selected", i === active ? "true" : "false"),
+          );
+          prevBtn.disabled = active === 0;
+          nextBtn.disabled = active === slides.length - 1;
+        };
+
+        const goTo = (i) => {
+          active = Math.max(0, Math.min(slides.length - 1, i));
+          track.scrollTo({
+            left: slides[active].offsetLeft,
+            behavior: "smooth",
+          });
+          updateUI();
+        };
+
+        prevBtn?.addEventListener("click", () => goTo(active - 1));
+        nextBtn?.addEventListener("click", () => goTo(active + 1));
+
+        const onScroll = () => {
+          const x = track.scrollLeft;
+          let nearest = 0,
+            best = Infinity;
+          slides.forEach((s, i) => {
+            const d = Math.abs(s.offsetLeft - x);
+            if (d < best) {
+              best = d;
+              nearest = i;
+            }
+          });
+          if (nearest !== active) {
+            active = nearest;
+            updateUI();
+          }
+        };
+        track.addEventListener("scroll", onScroll, { passive: true });
+        track.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") goTo(active + 1);
+          if (e.key === "ArrowLeft") goTo(active - 1);
+        });
+
+        updateUI();
+
+        addEventListener(
+          "resize",
+          () => {
+            // re-snap to the active slide after layout changes
+            track &&
+              slides.length &&
+              track.scrollTo({ left: slides[active].offsetLeft });
+          },
+          { passive: true },
+        );
+      }
+
+      // ========= Skills =========
+      const skillTpl = document.getElementById("tpl-skill");
+      const skillGrid = document.getElementById("skills-grid");
+      DATA.skills.forEach((s) => {
+        const node = skillTpl.content.cloneNode(true);
+        node.querySelector("h3").textContent = s.area;
+        node.querySelector('[data-role="label"]').textContent = s.label;
+        const items = node.querySelector('[data-role="items"]');
+        s.items.forEach((i) =>
+          items.append(el("span", { className: "pill" }, i)),
+        );
+        skillGrid.append(node);
+      });
+
+      // ========= Experience =========
+      // ========= Experience =========
+      const expTpl = document.getElementById("tpl-exp");
+      const expList = document.getElementById("exp-list");
+      DATA.experience.forEach((e) => {
+        const node = expTpl.content.cloneNode(true);
+        node.querySelector('[data-role="role"]').textContent = e.role;
+
+        const companyEl = node.querySelector('[data-role="company"]');
+        if (e.companyUrl) {
+          const [name, rest] = (e.company || "")
+            .split("·")
+            .map((s) => s.trim());
+          const a = el(
+            "a",
+            {
+              href: e.companyUrl,
+              target: "_blank",
+              rel: "noopener",
+              "aria-label": `Visit ${name} website`,
+            },
+            name || e.company,
+          );
+          companyEl.textContent = "";
+          companyEl.append(a);
+          if (rest) companyEl.append(document.createTextNode(` · ${rest}`));
+        } else {
+          companyEl.textContent = e.company;
+        }
+
+        node.querySelector('[data-role="dates"]').textContent = e.dates;
+        const ul = node.querySelector('[data-role="bullets"]');
+        e.bullets.forEach((b) => ul.append(el("li", {}, b)));
+        expList.append(node);
+      });
+
+      // ========= Education & Certs =========
+      const eduCert = document.getElementById("edu-cert");
+      const eduTpl = document.getElementById("tpl-edu");
+
+      const eduNode = eduTpl.content.cloneNode(true);
+      eduNode.querySelector('[data-role="title"]').textContent =
+        DATA.education.title;
+      eduNode.querySelector('[data-role="place"]').textContent =
+        DATA.education.place;
+      eduCert.append(eduNode);
+
+      const certNode = eduTpl.content.cloneNode(true);
+      certNode.querySelector('[data-role="title"]').textContent =
+        "Certifications";
+      // certNode.querySelector('[data-role="place"]').textContent = "-";
+      const certList = certNode.querySelector('[data-role="list"]');
+      DATA.certifications.forEach((c) => {
+        const li = el("li", {});
+        const a = el(
+          "a",
+          { href: c.url || "#", target: "_blank", rel: "noopener" },
+          c.label,
+        );
+        li.append(a);
+        certList.append(li);
+      });
+      eduCert.append(certNode);
+
+      // ========= Footer =========
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // ========= Active link on scroll =========
+      const ids = ["about", "experience", "skills", "projects", "education"];
+      const links = [...document.querySelectorAll('.nav a[href^="#"]')];
+      const sections = links
+        .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
+        .filter(Boolean);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              links.forEach((a) => a.removeAttribute("aria-current"));
+              const link = links.find(
+                (a) => a.getAttribute("href") === `#${e.target.id}`,
+              );
+              link?.setAttribute("aria-current", "page");
+              link?.scrollIntoView({
+                inline: "center",
+                block: "nearest",
+                behavior: "smooth",
+              });
+            }
+          });
+        },
+        { rootMargin: "-50% 0px -50% 0px", threshold: [0, 1] },
+      );
+
+      sections.forEach((s) => io.observe(s));
+
+      // Nave Bar Sticky
+      const progressEl = document.getElementById("scroll-progress");
+      const updateProgress = () => {
+        const y = document.documentElement.scrollTop || document.body.scrollTop;
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = h > 0 ? (y / h) * 100 : 0;
+        progressEl.style.width = pct + "%";
+      };
+      addEventListener("scroll", updateProgress, { passive: true });
+      addEventListener("resize", updateProgress);
+      updateProgress();
+      const headerEl = document.querySelector("header.site");
+      const setNavHeight = () =>
+        document.documentElement.style.setProperty(
+          "--nav-h",
+          headerEl.offsetHeight + "px",
+        );
+      setNavHeight();
+      addEventListener("resize", setNavHeight);
+    </script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Himanshu Abburu",
+        "jobTitle": "Software Engineer (Backend & Integration)",
+        "email": "mailto:himanshuabburu@gmail.com",
+        "url": "https://himanshu-abburu.netlify.app/",
+        "sameAs": [
+          "http://www.linkedin.com/in/himanshuabburu",
+          "https://github.com/HimanshuAbburu"
+        ]
+      }
+    </script>
   </body>
 </html>
