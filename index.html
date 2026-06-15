@@ -149,16 +149,10 @@
         padding: 0;
       }
 
-      nav.inner {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-
       .brand {
         font-weight: 700;
         letter-spacing: 0.2px;
-        font-size: var(--t1);
+        font-size: var(--t0);
       }
 
       nav.inner .brand {
@@ -192,42 +186,15 @@
         white-space: nowrap;
         flex: 0 0 auto;
       }
-      /* Always-flexible nav + horizontal scroll when needed */
-      nav.inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.6rem;
-      }
-      .nav {
-        display: flex;
-        gap: 0.6rem;
-        flex: 1 1 auto; /* allow the links row to shrink */
-        min-width: 0; /* critical so it can actually shrink */
-        overflow-x: auto; /* scroll if it still doesn't fit */
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .nav::-webkit-scrollbar {
-        display: none;
-      }
-      .nav a {
-        white-space: nowrap;
-        flex: 0 0 auto;
-      }
-      /* Wrap links onto a second line under the logo on medium screens */
       @media (max-width: 1024px) {
-        nav.inner {
-          flex-wrap: wrap;
-          row-gap: 0.4rem;
-        }
-        .nav {
-          order: 2;
-          flex-basis: 100%;
-        }
         .nav a {
           padding: 0.4rem 0.6rem;
-        } /* tighter padding helps fit */
+        }
+      }
+      @media (max-width: 900px) {
+        .nav a {
+          padding: 0.35rem 0.5rem;
+        }
       }
 
       .pill {
@@ -307,7 +274,52 @@
       }
 
       .skills {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .skill-card {
+        border-top: 2px solid var(--accent);
+        gap: 1rem !important;
+      }
+
+      .skill-header {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .skill-icon {
+        width: 2.2rem;
+        height: 2.2rem;
+        flex: 0 0 2.2rem;
+        border-radius: 8px;
+        background: color-mix(in oklab, var(--accent), transparent 87%);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .skill-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .skill-chip {
+        background: color-mix(in oklab, var(--fg), transparent 93%);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 0.25rem 0.6rem;
+        font-size: var(--t-1);
+        font-weight: 500;
+        color: var(--fg);
+        letter-spacing: 0.01em;
       }
 
       footer {
@@ -413,22 +425,10 @@
       }
 
       nav.inner {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
         position: relative;
-      }
-
-      .progress-wrap {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 3px;
-        pointer-events: none;
-      }
-
-      .progress {
-        height: 100%;
-        width: 0%;
-        background: var(--accent);
       }
 
       .carousel {
@@ -467,24 +467,10 @@
       }
 
       .dots button {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
         border: 0;
-        padding: 0;
-        background: var(--line);
-      }
-
-      .dots button[aria-selected="true"] {
-        background: var(--accent);
-        width: 22px;
       }
 
       /* --- Mobile card equal-height + tidy content --- */
-      :root {
-        --proj-card-h-mobile: clamp(440px, 78vh, 600px);
-      }
-
       .slide {
         display: flex;
       }
@@ -571,6 +557,405 @@
           padding: 0.55rem 0.9rem;
         }
       }
+
+      /* =====================
+         Hamburger nav (mobile)
+         ===================== */
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.4rem 0.55rem;
+        cursor: pointer;
+        color: var(--fg);
+        line-height: 1;
+        font-size: 1.1rem;
+        flex: 0 0 auto;
+        transition: background 0.15s ease;
+      }
+      .nav-toggle:hover {
+        background: color-mix(in oklab, var(--accent), transparent 90%);
+      }
+      @media (max-width: 600px) {
+        .nav-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: color-mix(in oklab, var(--bg), transparent 5%);
+          backdrop-filter: saturate(130%) blur(8px);
+          border-bottom: 1px solid var(--line);
+          flex-direction: column;
+          padding: 0.5rem var(--pad) 0.75rem;
+          gap: 0.25rem;
+          z-index: 99;
+        }
+        .nav.open {
+          display: flex;
+        }
+        .nav a {
+          padding: 0.55rem 0.75rem;
+          border-radius: 8px;
+        }
+      }
+
+      /* =====================
+         Image placeholder
+         ===================== */
+      .cover-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        background: color-mix(in oklab, var(--bg), var(--line) 40%);
+        color: var(--muted);
+        font-size: var(--t-1);
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .cover-placeholder svg {
+        opacity: 0.45;
+      }
+      .project-card .media {
+        position: relative;
+      }
+      .cover-placeholder.loaded {
+        opacity: 0;
+      }
+
+      /* =====================
+         Visual Polish
+         ===================== */
+
+      /* Card depth + hover lift */
+      .card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 28px rgba(0, 0, 0, 0.07);
+      }
+      @media (prefers-color-scheme: dark) {
+        .card {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+        .card:hover {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35), 0 12px 28px rgba(0, 0, 0, 0.28);
+        }
+      }
+
+      /* Pill hover tint for interactive pills (links/buttons) */
+      a.pill:hover,
+      button.pill:hover {
+        text-decoration: none;
+        background: color-mix(in oklab, var(--accent), transparent 90%);
+        border-color: color-mix(in oklab, var(--accent), transparent 60%);
+      }
+
+      /* Smooth scroll progress bar */
+      .progress {
+        transition: width 0.1s linear;
+      }
+
+      /* Scroll-reveal */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: none; }
+      }
+      .animate-ready {
+        opacity: 0;
+      }
+      .animate-ready.visible {
+        animation: fadeUp 0.5s ease forwards;
+      }
+
+      /* =====================
+         Hero Improvements
+         ===================== */
+
+      .hero {
+        padding: clamp(40px, 6vh, 72px) 0 clamp(24px, 5vh, 56px);
+      }
+
+      .hero-name {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-badge {
+        color: var(--accent);
+        border-color: color-mix(in oklab, var(--accent), transparent 70%);
+      }
+
+      /* CTA buttons */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1.2rem;
+        border-radius: 999px;
+        font-size: var(--t-1);
+        font-weight: 600;
+        background: var(--accent);
+        color: #fff;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.18s ease, transform 0.15s ease;
+      }
+      .btn-primary:hover {
+        background: color-mix(in oklab, var(--accent), black 12%);
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1.2rem;
+        border-radius: 999px;
+        font-size: var(--t-1);
+        font-weight: 600;
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid color-mix(in oklab, var(--accent), transparent 50%);
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.18s ease, border-color 0.18s ease;
+      }
+      .btn-outline:hover {
+        background: color-mix(in oklab, var(--accent), transparent 90%);
+        border-color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* =====================
+         Layout & Spacing
+         ===================== */
+
+      /* Section h2 left accent */
+      section header h2 {
+        border-left: 3px solid var(--accent);
+        padding-left: 0.75rem;
+      }
+
+      /* Experience timeline */
+      #exp-list {
+        border-left: 2px solid var(--line);
+        margin-left: 0.75rem;
+        padding-left: 1.25rem;
+      }
+
+      /* Edu/cert two-column grid */
+      #edu-cert {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      /* Carousel controls spacing */
+      .carousel-controls {
+        margin-top: var(--gap);
+      }
+
+      #proj-prev,
+      #proj-next {
+        cursor: pointer;
+        font-size: var(--t1);
+        min-width: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Carousel dots — bigger tap target */
+      .dots button {
+        padding: 6px;
+        line-height: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+      .dots button::after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--line);
+        transition: width 0.2s ease, background 0.2s ease;
+      }
+      .dots button[aria-selected="true"]::after {
+        background: var(--accent);
+        width: 22px;
+      }
+
+      /* Footer wrapping */
+      footer .cluster {
+        flex-wrap: wrap;
+        gap: var(--gap);
+      }
+
+      /* =====================
+         Mobile Experience
+         ===================== */
+
+      @media (max-width: 640px) {
+        .nav {
+          padding: 0.6rem 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero .cluster {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero .cluster .btn-primary {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Experience bullet spacing */
+      [data-role="bullets"] li + li {
+        margin-top: 0.4rem;
+      }
+
+      /* =====================
+         Nav avatar (scroll target)
+         ===================== */
+      .nav-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex: 0 0 auto;
+        opacity: 0;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        border: 1.5px solid color-mix(in oklab, var(--accent), transparent 50%);
+        position: relative;
+        transition: opacity 0.15s ease;
+        flex-shrink: 0;
+      }
+
+      .nav-avatar img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Flying clone between hero and nav */
+      .photo-fly {
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 300;
+        will-change: transform, width, height;
+        opacity: 0;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+        border: 2px solid color-mix(in oklab, var(--accent), transparent 55%);
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 85%);
+      }
+
+      .photo-fly img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =====================
+         Hero photo
+         ===================== */
+      .hero-layout {
+        display: flex;
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4rem);
+      }
+
+      .hero-text {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      .hero-photo-wrap {
+        flex: 0 0 auto;
+        position: relative;
+        width: clamp(130px, 16vw, 190px);
+        height: clamp(130px, 16vw, 190px);
+      }
+
+      .hero-photo-placeholder {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        user-select: none;
+      }
+
+      .hero-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid color-mix(in oklab, var(--accent), transparent 60%);
+        box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent), transparent 88%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hero-photo.loaded {
+        opacity: 1;
+      }
+
+      @media (max-width: 600px) {
+        .hero-layout {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-photo-wrap {
+          align-self: center;
+          order: -1;
+        }
+      }
     </style>
   </head>
 
@@ -578,21 +963,22 @@
     <a
       class="pill"
       href="#content"
-      style="position: absolute; left: -1000px; top: 6px"
+      style="position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; top: 6px; left: 6px"
       >Skip to content</a
     >
 
     <header class="site">
       <div class="container">
         <nav class="inner" aria-label="Primary">
-          <a class="brand" href="#">Himanshu</a>
-          <div class="nav" role="menubar">
-            <a role="menuitem" href="#about">About</a>
-            <a role="menuitem" href="#experience">Experience</a>
-            <a role="menuitem" href="#skills">Skills</a>
-            <a role="menuitem" href="#projects">Projects</a>
-            <a role="menuitem" href="#learning">Certificates</a>
+          <div class="nav" id="site-nav">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#learning">Certificates</a>
           </div>
+          <div class="nav-avatar" id="nav-avatar" aria-hidden="true"><span>HA</span></div>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button>
           <div class="progress-wrap" aria-hidden="true">
             <div class="progress" id="scroll-progress"></div>
           </div>
@@ -604,42 +990,55 @@
       <!-- Hero / About -->
       <section id="about" class="hero">
         <div class="container">
-          <div class="stack">
-            <span class="pill">Backend · Cloud</span>
-            <h1>Himanshu Abburu</h1>
-            <p class="lead muted">
-              Software Engineer with 3+ years in backend development (Spring
-              Boot, Node.js, Python, AWS). Proven ability to deliver results
-              fast, even with new or unfamiliar tools. Skilled in API design,
-              problem-solving, and building cost-efficient solutions that meet
-              both business and technical goals.
-            </p>
-            <div class="cluster">
-              <a class="pill" href="tel:+447983876715">+44 7983 876715</a>
-              <a class="pill" href="mailto:himanshuabburu@gmail.com"
-                >himanshuabburu@gmail.com</a
-              >
-              <a
-                class="pill"
-                href="http://www.linkedin.com/in/himanshuabburu"
-                target="_blank"
-                rel="noopener"
-                >LinkedIn</a
-              >
-              <a
-                class="pill"
-                href="https://github.com/HimanshuAbburu"
-                target="_blank"
-                rel="noopener"
-                >GitHub</a
-              >
-              <a
-                class="pill"
-                href="https://himanshu-abburu.netlify.app/"
-                target="_blank"
-                rel="noopener"
-                >Portfolio</a
-              >
+          <div class="hero-layout">
+            <div class="stack hero-text">
+              <span class="pill hero-badge">Backend · Cloud</span>
+              <h1 class="hero-name">Himanshu Abburu</h1>
+              <p class="lead">
+                Software Engineer with 3+ years in backend development (Spring
+                Boot, Node.js, Python, AWS). Proven ability to deliver results
+                fast, even with new or unfamiliar tools. Skilled in API design,
+                problem-solving, and building cost-efficient solutions that meet
+                both business and technical goals.
+              </p>
+              <div class="cluster">
+                <a class="pill" href="tel:+447983876715">+44 7983 876715</a>
+                <a class="pill" href="mailto:himanshuabburu@gmail.com"
+                  >himanshuabburu@gmail.com</a
+                >
+                <a
+                  class="pill"
+                  href="https://www.linkedin.com/in/himanshuabburu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+                <a
+                  class="pill"
+                  href="https://github.com/HimanshuAbburu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a
+                  class="pill"
+                  href="https://himanshu-abburu.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Portfolio</a
+                >
+                <a class="btn-primary" href="mailto:himanshuabburu@gmail.com">Get in touch</a>
+              </div>
+            </div>
+            <!-- Profile photo: replace src with your image path to activate -->
+            <div class="hero-photo-wrap">
+              <div class="hero-photo-placeholder" aria-hidden="true">HA</div>
+              <img
+                class="hero-photo"
+                id="hero-photo"
+                src=""
+                alt="Himanshu Abburu"
+              />
             </div>
           </div>
         </div>
@@ -647,7 +1046,7 @@
 
       <!-- Experience -->
       <section id="experience" aria-labelledby="exp-h2">
-        <div class="container stack">
+        <div class="container stack animate-ready">
           <header class="stack">
             <h2 id="exp-h2">Experience</h2>
             <p class="muted">Highlights from recent roles.</p>
@@ -658,7 +1057,7 @@
 
       <!-- Skills -->
       <section id="skills" aria-labelledby="skills-h2">
-        <div class="container stack">
+        <div class="container stack animate-ready">
           <header class="stack">
             <h2 id="skills-h2">Skills</h2>
             <p class="muted">
@@ -670,7 +1069,7 @@
       </section>
       <!-- Projects -->
       <section id="projects" aria-labelledby="projects-h2">
-        <div class="container stack">
+        <div class="container stack animate-ready">
           <header class="stack">
             <h2 id="projects-h2">Personal Projects</h2>
             <p class="muted">Concrete work with measurable impact.</p>
@@ -704,7 +1103,7 @@
 
       <!-- Education & Certifications -->
       <section id="learning" aria-labelledby="learn-h2">
-        <div class="container stack">
+        <div class="container stack animate-ready">
           <header class="stack">
             <h2 id="learn-h2">Education & Certifications</h2>
           </header>
@@ -719,16 +1118,16 @@
         <div class="cluster">
           <a
             class="pill"
-            href="http://www.linkedin.com/in/himanshuabburu"
+            href="https://www.linkedin.com/in/himanshuabburu"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             >LinkedIn</a
           >
           <a
             class="pill"
             href="https://github.com/HimanshuAbburu"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             >GitHub</a
           >
           <a class="pill" href="mailto:himanshuabburu@gmail.com">Email</a>
@@ -772,19 +1171,12 @@
     </template>
 
     <template id="tpl-skill">
-      <article class="card stack" style="gap: 0.6rem">
-        <div
-          class="cluster"
-          style="justify-content: space-between; align-items: center"
-        >
-          <h3 style="margin: 0; font-size: var(--t1)"></h3>
-          <span class="pill" data-role="label"></span>
+      <article class="card stack skill-card">
+        <div class="skill-header">
+          <div class="skill-icon" data-role="icon" aria-hidden="true"></div>
+          <h3 style="margin: 0; font-size: var(--t0)" data-role="title"></h3>
         </div>
-        <div
-          class="cluster"
-          data-role="items"
-          style="gap: 0.4rem; flex-wrap: wrap"
-        ></div>
+        <div class="skill-items" data-role="items"></div>
       </article>
     </template>
 
@@ -828,7 +1220,7 @@
         links: {
           phone: "+44 7983876715",
           email: "himanshuabburu@gmail.com",
-          linkedin: "http://www.linkedin.com/in/himanshuabburu",
+          linkedin: "https://www.linkedin.com/in/himanshuabburu",
           github: "https://github.com/HimanshuAbburu",
           portfolio: "https://himanshu-abburu.netlify.app/",
         },
@@ -866,17 +1258,17 @@
         skills: [
           {
             area: "Languages",
-            label: "Programming",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
             items: ["Java", "JavaScript", "Python", "Node.js"],
           },
           {
             area: "Frameworks",
-            label: "Backend & UI",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
             items: ["Spring Boot", "Express.js", "React"],
           },
           {
             area: "Cloud",
-            label: "Platforms",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`,
             items: [
               "AWS (Lambda, S3)",
               "Azure (Logic Apps, APIM, SQL)",
@@ -885,12 +1277,12 @@
           },
           {
             area: "Databases",
-            label: "Storage",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
             items: ["Azure SQL", "MongoDB", "MySQL"],
           },
           {
             area: "DevOps",
-            label: "CI/CD & IaC",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>`,
             items: [
               "Git",
               "Azure DevOps",
@@ -974,7 +1366,12 @@
       const $ = (s, c = document) => c.querySelector(s);
       const $$ = (s, c = document) => [...c.querySelectorAll(s)];
       const el = (t, props = {}, ...kids) => {
-        const n = Object.assign(document.createElement(t), props);
+        const n = document.createElement(t);
+        for (const [k, v] of Object.entries(props)) {
+          if (k === "className") n.className = v;
+          else if (k.startsWith("aria-") || k === "role") n.setAttribute(k, v);
+          else n[k] = v;
+        }
         kids
           .flat()
           .forEach((k) =>
@@ -1052,6 +1449,12 @@
           if (!linksEl.childElementCount) linksEl.remove();
 
           const homepage = p.demo || p.code;
+          const mediaEl = coverEl.closest(".media");
+
+          const placeholder = document.createElement("div");
+          placeholder.className = "cover-placeholder";
+          placeholder.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>${p.title}</span>`;
+
           if (homepage) {
             coverEl.alt = `${p.title} — homepage preview`;
             coverEl.src = mshot(homepage, 900);
@@ -1062,12 +1465,15 @@
             ].join(", ");
             coverEl.sizes = "(min-width: 900px) 520px, 92vw";
 
+            mediaEl.insertBefore(placeholder, coverEl);
+
+            coverEl.onload = () => placeholder.classList.add("loaded");
             coverEl.onerror = () => {
-              coverEl.style.opacity = "0.85";
-              coverEl.style.filter = "grayscale(1)";
+              coverEl.style.display = "none";
             };
           } else {
-            coverEl.closest(".media").remove();
+            mediaEl.innerHTML = "";
+            mediaEl.appendChild(placeholder);
           }
 
           const slide = el("div", { className: "slide" });
@@ -1090,12 +1496,10 @@
           [...dotsEl.children].forEach((b, i) =>
             b.setAttribute("aria-selected", i === active ? "true" : "false"),
           );
-          prevBtn.disabled = active === 0;
-          nextBtn.disabled = active === slides.length - 1;
         };
 
         const goTo = (i) => {
-          active = Math.max(0, Math.min(slides.length - 1, i));
+          active = ((i % slides.length) + slides.length) % slides.length;
           track.scrollTo({
             left: slides[active].offsetLeft,
             behavior: "smooth",
@@ -1147,11 +1551,11 @@
       const skillGrid = document.getElementById("skills-grid");
       DATA.skills.forEach((s) => {
         const node = skillTpl.content.cloneNode(true);
-        node.querySelector("h3").textContent = s.area;
-        node.querySelector('[data-role="label"]').textContent = s.label;
+        node.querySelector('[data-role="title"]').textContent = s.area;
+        node.querySelector('[data-role="icon"]').innerHTML = s.icon || "";
         const items = node.querySelector('[data-role="items"]');
         s.items.forEach((i) =>
-          items.append(el("span", { className: "pill" }, i)),
+          items.append(el("span", { className: "skill-chip" }, i)),
         );
         skillGrid.append(node);
       });
@@ -1201,12 +1605,15 @@
         DATA.education.title;
       eduNode.querySelector('[data-role="place"]').textContent =
         DATA.education.place;
+      const eduUl = eduNode.querySelector('[data-role="list"]');
+      if (!DATA.education.list.length) eduUl.remove();
+      else DATA.education.list.forEach((item) => eduUl.append(el("li", {}, item)));
       eduCert.append(eduNode);
 
       const certNode = eduTpl.content.cloneNode(true);
       certNode.querySelector('[data-role="title"]').textContent =
         "Certifications";
-      // certNode.querySelector('[data-role="place"]').textContent = "-";
+      certNode.querySelector('[data-role="place"]').remove();
       const certList = certNode.querySelector('[data-role="list"]');
       DATA.certifications.forEach((c) => {
         const li = el("li", {});
@@ -1220,37 +1627,63 @@
       });
       eduCert.append(certNode);
 
+      // ========= Profile photo =========
+      const heroPhoto = document.getElementById("hero-photo");
+      if (heroPhoto?.src) {
+        heroPhoto.onload = () => heroPhoto.classList.add("loaded");
+        heroPhoto.onerror = () => heroPhoto.remove();
+      }
+
       // ========= Footer =========
       document.getElementById("year").textContent = new Date().getFullYear();
 
       // ========= Active link on scroll =========
-      const ids = ["about", "experience", "skills", "projects", "education"];
       const links = [...document.querySelectorAll('.nav a[href^="#"]')];
       const sections = links
         .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
         .filter(Boolean);
 
+      // Track visibility ratios; pick the section with the highest ratio to avoid flicker
+      const visibilityMap = new Map(sections.map((s) => [s.id, 0]));
+
+      const setActive = (id) => {
+        links.forEach((a) => a.removeAttribute("aria-current"));
+        const link = links.find((a) => a.getAttribute("href") === `#${id}`);
+        if (!link) return;
+        link.setAttribute("aria-current", "page");
+        link.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+      };
+
       const io = new IntersectionObserver(
         (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              links.forEach((a) => a.removeAttribute("aria-current"));
-              const link = links.find(
-                (a) => a.getAttribute("href") === `#${e.target.id}`,
-              );
-              link?.setAttribute("aria-current", "page");
-              link?.scrollIntoView({
-                inline: "center",
-                block: "nearest",
-                behavior: "smooth",
-              });
-            }
+          entries.forEach((e) => visibilityMap.set(e.target.id, e.intersectionRatio));
+          let bestId = null, bestRatio = 0;
+          visibilityMap.forEach((ratio, id) => {
+            if (ratio > bestRatio) { bestRatio = ratio; bestId = id; }
           });
+          if (bestId) setActive(bestId);
         },
-        { rootMargin: "-50% 0px -50% 0px", threshold: [0, 1] },
+        { rootMargin: "-10% 0px -10% 0px", threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
       );
 
       sections.forEach((s) => io.observe(s));
+
+      // ========= Hamburger toggle =========
+      const navToggle = document.getElementById("nav-toggle");
+      const siteNav = document.getElementById("site-nav");
+      navToggle?.addEventListener("click", () => {
+        const open = siteNav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", open);
+        navToggle.textContent = open ? "✕" : "☰";
+      });
+      // Close menu when a nav link is clicked
+      siteNav?.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          siteNav.classList.remove("open");
+          navToggle?.setAttribute("aria-expanded", "false");
+          navToggle && (navToggle.textContent = "☰");
+        }),
+      );
 
       // Nave Bar Sticky
       const progressEl = document.getElementById("scroll-progress");
@@ -1261,7 +1694,7 @@
         progressEl.style.width = pct + "%";
       };
       addEventListener("scroll", updateProgress, { passive: true });
-      addEventListener("resize", updateProgress);
+      addEventListener("resize", updateProgress, { passive: true });
       updateProgress();
       const headerEl = document.querySelector("header.site");
       const setNavHeight = () =>
@@ -1271,6 +1704,130 @@
         );
       setNavHeight();
       addEventListener("resize", setNavHeight);
+
+      // ========= Sticky avatar scroll transition =========
+      const heroWrap = document.querySelector(".hero-photo-wrap");
+      const navAvatarEl = document.getElementById("nav-avatar");
+
+      const flyEl = document.createElement("div");
+      flyEl.className = "photo-fly";
+      flyEl.setAttribute("aria-hidden", "true");
+      flyEl.innerHTML = `<span>HA</span>`;
+      document.body.appendChild(flyEl);
+
+      heroPhoto.addEventListener("load", () => {
+        [flyEl, navAvatarEl].forEach((container) => {
+          const img = document.createElement("img");
+          img.src = heroPhoto.src;
+          img.alt = "";
+          container.appendChild(img);
+        });
+      });
+
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const easeInOut = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Cache nav avatar rect — only recompute on resize
+      let navAvatarRect = null;
+      const refreshNavRect = () => { navAvatarRect = navAvatarEl.getBoundingClientRect(); };
+      addEventListener("resize", refreshNavRect, { passive: true });
+
+      let flyTicking = false;
+
+      const updatePhotoFly = () => {
+        // Always use live hero rect (it scrolls); cached nav rect is fine (fixed position)
+        const heroRect = heroWrap.getBoundingClientRect();
+        if (!navAvatarRect) refreshNavRect();
+
+        const navH = headerEl.offsetHeight;
+        const heroH = heroRect.width; // circle, so width === height
+
+        // t spans a 2× hero-height scroll window for a leisurely transition
+        const raw = (navH - heroRect.top) / (heroH * 2);
+        const t = Math.max(0, Math.min(1, raw));
+
+        // Phase 1 (t 0→0.25): cross-fade hero out / fly in at same position
+        // Phase 2 (t 0.25→1): fly travels from hero position to nav slot
+        const FADE = 0.25;
+        const heroOpacity = Math.max(0, 1 - t / FADE);
+        const flyOpacity  = Math.min(1, t / FADE);
+        const moveT = t <= FADE ? 0 : (t - FADE) / (1 - FADE);
+        const et = easeInOut(moveT);
+
+        heroWrap.style.opacity = String(heroOpacity);
+        flyEl.style.opacity    = String(flyOpacity);
+
+        if (prefersReducedMotion) {
+          // Snap: no animation, just cross-fade
+          navAvatarEl.style.opacity = t >= 1 ? "1" : "0";
+          return;
+        }
+
+        if (t >= 1) {
+          flyEl.style.opacity        = "0";
+          navAvatarEl.style.opacity  = "1";
+          return;
+        }
+
+        navAvatarEl.style.opacity = "0";
+
+        // Start position: current hero circle centre + size
+        const sx = heroRect.left + heroRect.width  / 2;
+        const sy = heroRect.top  + heroRect.height / 2;
+        const ss = heroRect.width;
+
+        // End position: nav avatar centre + size
+        const ex = navAvatarRect.left + navAvatarRect.width  / 2;
+        const ey = navAvatarRect.top  + navAvatarRect.height / 2;
+        const es = navAvatarRect.width;
+
+        const cx = lerp(sx, ex, et);
+        const cy = lerp(sy, ey, et);
+        const cs = lerp(ss, es, et);
+
+        flyEl.style.width     = cs + "px";
+        flyEl.style.height    = cs + "px";
+        flyEl.style.fontSize  = cs * 0.28 + "px";
+        flyEl.style.transform = `translate(${cx - cs / 2}px, ${cy - cs / 2}px)`;
+      };
+
+      addEventListener("scroll", () => {
+        if (!flyTicking) {
+          requestAnimationFrame(() => { updatePhotoFly(); flyTicking = false; });
+          flyTicking = true;
+        }
+      }, { passive: true });
+
+      addEventListener("resize", () => {
+        refreshNavRect();
+        updatePhotoFly();
+      }, { passive: true });
+
+      // Initialise after first layout paint so nav avatar rect is available
+      requestAnimationFrame(() => { refreshNavRect(); updatePhotoFly(); });
+
+      // ========= Scroll-reveal =========
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".animate-ready").forEach((el) => revealObserver.observe(el));
+
+      // Also fix dots: remove old inline width/background (now handled via ::after pseudo)
+      // The dots button background was set to var(--line) directly — override with transparent
+      // so the ::after pseudo-element controls appearance
+      document.querySelectorAll(".dots button").forEach((b) => {
+        b.style.background = "transparent";
+        b.style.width = "";
+      });
     </script>
 
     <!-- Structured data -->
@@ -1283,7 +1840,7 @@
         "email": "mailto:himanshuabburu@gmail.com",
         "url": "https://himanshu-abburu.netlify.app/",
         "sameAs": [
-          "http://www.linkedin.com/in/himanshuabburu",
+          "https://www.linkedin.com/in/himanshuabburu",
           "https://github.com/HimanshuAbburu"
         ]
       }
