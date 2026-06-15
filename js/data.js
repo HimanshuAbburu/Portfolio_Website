@@ -38,6 +38,15 @@ const DATA = {
       code: "https://github.com/HimanshuAbburu/gpt-2",
     },
     {
+      title: "Credit Risk ML Pipeline",
+      subtitle: "Machine learning · FinTech",
+      desc: "End-to-end ML pipeline for credit risk classification with automated feature engineering and model evaluation.",
+      explain:
+        "Built a production-ready pipeline that ingests raw financial data, applies automated feature engineering, and trains classification models to predict credit default risk. Includes data preprocessing, model selection, evaluation metrics, and reusable pipeline components following MLOps principles.",
+      tags: ["Python", "scikit-learn", "Pandas", "ML", "FinTech"],
+      code: "https://github.com/HimanshuAbburu/credit_risk_ml_pipeline",
+    },
+    {
       title: "Luhn Algorithm Validator",
       subtitle: "Financial security",
       desc: "High-performance credit card validator to cut unnecessary API calls to payment processors.",
