@@ -6,945 +6,17 @@
     <title>Himanshu Abburu · Portfolio</title>
     <meta
       name="description"
-      content="Minimal, modular portfolio for Himanshu Abburu - backend & integration developer across Spring Boot, Python, AWS, and Azure."
+      content="Portfolio of Himanshu Abburu — backend and integration engineer across Spring Boot, Python, AWS, and Azure."
     />
-
-    <!-- Colors & theming -->
-    <meta
-      name="theme-color"
-      content="#111827"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta
-      name="theme-color"
-      content="#ffffff"
-      media="(prefers-color-scheme: light)"
-    />
-
-    <style>
-      /* =======================
-       Minimal Design System
-       ======================= */
-      :root {
-        --bg: #ffffff;
-        --fg: #0f172a;
-        /* slate-900 */
-        --muted: #475569;
-        /* slate-600 */
-        --line: #e2e8f0;
-        /* slate-200 */
-        --accent: #0ea5e9;
-        /* cyan-500 */
-        --accent-2: #22d3ee;
-        /* cyan-400 */
-        --radius: 14px;
-        --pad: clamp(14px, 1.8vw, 22px);
-        --gap: clamp(16px, 2.2vw, 28px);
-        --max: 1024px;
-        --nav-h: 64px;
-        --proj-card-h-mobile: clamp(440px, 78vh, 600px);
-
-        /* Fluid type scale */
-        --t-1: clamp(0.92rem, 0.86rem + 0.35vw, 1.05rem);
-        --t0: clamp(1.05rem, 1rem + 0.45vw, 1.15rem);
-        --t1: clamp(1.25rem, 1.1rem + 0.9vw, 1.5rem);
-        --t2: clamp(1.55rem, 1.25rem + 1.4vw, 1.9rem);
-        --t3: clamp(2rem, 1.5rem + 2.2vw, 2.6rem);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0b1220;
-          /* deep navy */
-          --fg: #e5e7eb;
-          /* light text */
-          --muted: #9aa4b2;
-          /* soft grey */
-          --line: #1f2937;
-          /* divider */
-          --accent: #38bdf8;
-          --accent-2: #67e8f9;
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      html:focus-within {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter,
-          Roboto, "Helvetica Neue", Arial;
-        color: var(--fg);
-        background: radial-gradient(
-            700px 400px at 110% -10%,
-            color-mix(in oklab, var(--accent), transparent 92%),
-            transparent
-          ),
-          radial-gradient(
-            700px 400px at -10% 0%,
-            color-mix(in oklab, var(--accent-2), transparent 94%),
-            transparent
-          ),
-          var(--bg);
-        line-height: 1.6;
-        padding-top: var(--nav-h);
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
-      }
-
-      img,
-      svg {
-        display: block;
-        max-width: 100%;
-      }
-
-      :focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), white 20%);
-        border-radius: 10px;
-      }
-
-      .container {
-        width: min(calc(100% - 2 * var(--pad)), var(--max));
-        margin-inline: auto;
-      }
-
-      .stack > * + * {
-        margin-top: var(--gap);
-      }
-
-      .cluster {
-        display: flex;
-        align-items: center;
-        gap: var(--gap);
-        flex-wrap: wrap;
-      }
-
-      .grid {
-        display: grid;
-        gap: var(--gap);
-      }
-
-      .list-plain {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .brand {
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        font-size: var(--t0);
-      }
-
-      nav.inner .brand {
-        flex: 0 0 auto;
-      }
-
-      .nav a {
-        padding: 0.5rem 0.8rem;
-        border-radius: 10px;
-      }
-
-      .nav a[aria-current="page"],
-      .nav a:hover {
-        text-decoration: none;
-        background: color-mix(in oklab, var(--accent), transparent 90%);
-      }
-
-      .nav {
-        display: flex;
-        gap: 0.6rem;
-        flex: 1 1 auto; /* allow it to shrink */
-        min-width: 0; /* <-- critical so it can actually shrink */
-        overflow-x: auto; /* horizontal scroll when needed */
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-      }
-      .nav::-webkit-scrollbar {
-        display: none;
-      } /* WebKit */
-      .nav a {
-        white-space: nowrap;
-        flex: 0 0 auto;
-      }
-      @media (max-width: 1024px) {
-        .nav a {
-          padding: 0.4rem 0.6rem;
-        }
-      }
-      @media (max-width: 900px) {
-        .nav a {
-          padding: 0.35rem 0.5rem;
-        }
-      }
-
-      .pill {
-        border: 1px solid var(--line);
-        padding: 0.38rem 0.7rem;
-        border-radius: 999px;
-        font-size: var(--t-1);
-        color: var(--muted);
-      }
-
-      .muted {
-        color: var(--muted);
-      }
-
-      .card {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: calc(var(--pad) * 1.2);
-        background: color-mix(in oklab, var(--bg), white 0%);
-      }
-
-      .hero {
-        padding: clamp(28px, 6vh, 72px) 0 clamp(24px, 5vh, 56px);
-      }
-
-      .hero .stack {
-        gap: clamp(6px, 1.2vh, 12px);
-      }
-
-      .hero h1 {
-        font-size: var(--t3);
-        line-height: 1.1;
-        margin: 0;
-        letter-spacing: -0.02em;
-        margin-top: clamp(18px, 3.2vh, 44px);
-      }
-
-      .hero .lead {
-        font-size: var(--t1);
-        max-width: 62ch;
-      }
-
-      section {
-        padding: calc(var(--gap) * 2) 0;
-        scroll-margin-top: var(--nav-h);
-      }
-
-      section header h2 {
-        font-size: var(--t2);
-        margin: 0;
-      }
-
-      .projects {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: calc(var(--gap) * 1.25);
-      }
-
-      .project-card .media {
-        margin: 0;
-        border-radius: calc(var(--radius) - 2px);
-        overflow: hidden;
-        border: 1px solid var(--line);
-        background: color-mix(in oklab, var(--bg), white 6%);
-        aspect-ratio: 16 / 10;
-      }
-
-      .project-card .cover {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translateZ(0);
-        transition: transform 0.35s ease;
-      }
-
-      .project-card:hover .cover {
-        transform: scale(1.02);
-      }
-
-      .skills {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-
-      .skill-card {
-        border-top: 2px solid var(--accent);
-        gap: 1rem !important;
-      }
-
-      .skill-header {
-        display: flex;
-        align-items: center;
-        gap: 0.65rem;
-      }
-
-      .skill-icon {
-        width: 2.2rem;
-        height: 2.2rem;
-        flex: 0 0 2.2rem;
-        border-radius: 8px;
-        background: color-mix(in oklab, var(--accent), transparent 87%);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .skill-icon svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      .skill-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-      }
-
-      .skill-chip {
-        background: color-mix(in oklab, var(--fg), transparent 93%);
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        padding: 0.25rem 0.6rem;
-        font-size: var(--t-1);
-        font-weight: 500;
-        color: var(--fg);
-        letter-spacing: 0.01em;
-      }
-
-      footer {
-        padding: calc(var(--gap) * 2) 0;
-        border-top: 1px solid var(--line);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation: none !important;
-          transition: none !important;
-          scroll-behavior: auto !important;
-        }
-      }
-
-      .form {
-        display: grid;
-        gap: var(--gap);
-      }
-
-      .form .row {
-        display: grid;
-        gap: var(--gap);
-        grid-template-columns: 1fr;
-      }
-
-      @media (min-width: 720px) {
-        .form .row {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .field {
-        display: grid;
-        gap: 0.35rem;
-      }
-
-      .label {
-        color: var(--muted);
-        font-size: var(--t-1);
-      }
-
-      .control {
-        width: 100%;
-        font: inherit;
-        padding: 0.9rem 1rem;
-        color: var(--fg);
-        background: color-mix(in oklab, var(--bg), white 0%);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-      }
-
-      .control::placeholder {
-        color: color-mix(in oklab, var(--muted), white 10%);
-      }
-
-      .kicker {
-        font-size: var(--t-1);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .desc {
-        font-size: var(--t0);
-        color: var(--fg);
-      }
-
-      .explain {
-        font-size: var(--t-1);
-        color: var(--muted);
-      }
-
-      .rule {
-        height: 1px;
-        background: var(--line);
-        border: 0;
-      }
-
-      .progress-wrap {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 3px;
-      }
-
-      .progress {
-        height: 100%;
-        width: 0%;
-        background: var(--accent);
-      }
-
-      header.site {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        backdrop-filter: saturate(130%) blur(8px);
-        background: color-mix(in oklab, var(--bg), transparent 30%);
-        border-bottom: 1px solid var(--line);
-      }
-
-      nav.inner {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        position: relative;
-      }
-
-      .carousel {
-        position: relative;
-      }
-
-      .carousel-viewport {
-        display: flex;
-        gap: var(--gap);
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-padding-inline: var(--pad);
-        padding-bottom: 0.25rem;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .carousel-viewport::-webkit-scrollbar {
-        display: none;
-      }
-
-      .slide {
-        scroll-snap-align: start;
-        flex: 0 0 min(92%, 540px);
-      }
-
-      @media (min-width: 900px) {
-        .slide {
-          flex-basis: 520px;
-        }
-      }
-
-      .dots {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-
-      .dots button {
-        border: 0;
-      }
-
-      /* --- Mobile card equal-height + tidy content --- */
-      .slide {
-        display: flex;
-      }
-
-      /* allow card to stretch to slide */
-      .project-card {
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* keep the preview image consistent */
-      .project-card .media {
-        aspect-ratio: 16 / 10;
-      }
-
-      /* let the “links” row sit at the bottom */
-      .project-card [data-role="links"] {
-        margin-top: auto;
-      }
-
-      /* clamp text on small screens so heights match */
-      @media (max-width: 640px) {
-        .slide {
-          height: var(--proj-card-h-mobile);
-        }
-
-        .project-card {
-          height: 100%;
-        }
-
-        .project-card .desc,
-        .project-card .explain {
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .project-card .desc {
-          -webkit-line-clamp: 3;
-        }
-
-        /* ~3 lines */
-        .project-card .explain {
-          -webkit-line-clamp: 2;
-        }
-
-        /* ~2 lines */
-        .project-card [data-role="tags"] {
-          max-height: 56px;
-          overflow: hidden;
-        }
-
-      }
-
-      /* slightly bigger tap targets for carousel on touch screens */
-      @media (pointer: coarse) {
-        #proj-prev,
-        #proj-next {
-          padding: 0.55rem 0.9rem;
-        }
-      }
-
-      /* =====================
-         Hamburger nav (mobile)
-         ===================== */
-      .nav-toggle {
-        display: none;
-        background: none;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 0.4rem 0.55rem;
-        cursor: pointer;
-        color: var(--fg);
-        line-height: 1;
-        font-size: 1.1rem;
-        flex: 0 0 auto;
-        transition: background 0.15s ease;
-      }
-      .nav-toggle:hover {
-        background: color-mix(in oklab, var(--accent), transparent 90%);
-      }
-      @media (max-width: 600px) {
-        .nav-toggle {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: color-mix(in oklab, var(--bg), transparent 5%);
-          backdrop-filter: saturate(130%) blur(8px);
-          border-bottom: 1px solid var(--line);
-          flex-direction: column;
-          padding: 0.5rem var(--pad) 0.75rem;
-          gap: 0.25rem;
-          z-index: 99;
-        }
-        .nav.open {
-          display: flex;
-        }
-        .nav a {
-          padding: 0.55rem 0.75rem;
-          border-radius: 8px;
-        }
-      }
-
-      /* =====================
-         Image placeholder
-         ===================== */
-      .cover-placeholder {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
-        background: color-mix(in oklab, var(--bg), var(--line) 40%);
-        color: var(--muted);
-        font-size: var(--t-1);
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-      .cover-placeholder svg {
-        opacity: 0.45;
-      }
-      .project-card .media {
-        position: relative;
-      }
-      .cover-placeholder.loaded {
-        opacity: 0;
-      }
-
-      /* =====================
-         Visual Polish
-         ===================== */
-
-      /* Card depth + hover lift */
-      .card {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 28px rgba(0, 0, 0, 0.07);
-      }
-      @media (prefers-color-scheme: dark) {
-        .card {
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.18);
-        }
-        .card:hover {
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35), 0 12px 28px rgba(0, 0, 0, 0.28);
-        }
-      }
-
-      /* Pill hover tint for interactive pills (links/buttons) */
-      a.pill:hover,
-      button.pill:hover {
-        text-decoration: none;
-        background: color-mix(in oklab, var(--accent), transparent 90%);
-        border-color: color-mix(in oklab, var(--accent), transparent 60%);
-      }
-
-      /* Smooth scroll progress bar */
-      .progress {
-        transition: width 0.1s linear;
-      }
-
-      /* Scroll-reveal */
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: none; }
-      }
-      .animate-ready {
-        opacity: 0;
-      }
-      .animate-ready.visible {
-        animation: fadeUp 0.5s ease forwards;
-      }
-
-      /* =====================
-         Hero Improvements
-         ===================== */
-
-      .hero {
-        padding: clamp(40px, 6vh, 72px) 0 clamp(24px, 5vh, 56px);
-      }
-
-      .hero-name {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-badge {
-        color: var(--accent);
-        border-color: color-mix(in oklab, var(--accent), transparent 70%);
-      }
-
-      /* CTA buttons */
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.55rem 1.2rem;
-        border-radius: 999px;
-        font-size: var(--t-1);
-        font-weight: 600;
-        background: var(--accent);
-        color: #fff;
-        border: 1px solid transparent;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.18s ease, transform 0.15s ease;
-      }
-      .btn-primary:hover {
-        background: color-mix(in oklab, var(--accent), black 12%);
-        text-decoration: none;
-        transform: translateY(-1px);
-      }
-      .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.55rem 1.2rem;
-        border-radius: 999px;
-        font-size: var(--t-1);
-        font-weight: 600;
-        background: transparent;
-        color: var(--accent);
-        border: 1px solid color-mix(in oklab, var(--accent), transparent 50%);
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.18s ease, border-color 0.18s ease;
-      }
-      .btn-outline:hover {
-        background: color-mix(in oklab, var(--accent), transparent 90%);
-        border-color: var(--accent);
-        text-decoration: none;
-      }
-
-      /* =====================
-         Layout & Spacing
-         ===================== */
-
-      /* Section h2 left accent */
-      section header h2 {
-        border-left: 3px solid var(--accent);
-        padding-left: 0.75rem;
-      }
-
-      /* Experience timeline */
-      #exp-list {
-        border-left: 2px solid var(--line);
-        margin-left: 0.75rem;
-        padding-left: 1.25rem;
-      }
-
-      /* Edu/cert two-column grid */
-      #edu-cert {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-
-      /* Carousel controls spacing */
-      .carousel-controls {
-        margin-top: var(--gap);
-      }
-
-      #proj-prev,
-      #proj-next {
-        cursor: pointer;
-        font-size: var(--t1);
-        min-width: 40px;
-        min-height: 40px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Carousel dots — bigger tap target */
-      .dots button {
-        padding: 6px;
-        line-height: 0;
-        background: transparent;
-        cursor: pointer;
-      }
-      .dots button::after {
-        content: '';
-        display: block;
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--line);
-        transition: width 0.2s ease, background 0.2s ease;
-      }
-      .dots button[aria-selected="true"]::after {
-        background: var(--accent);
-        width: 22px;
-      }
-
-      /* Footer wrapping */
-      footer .cluster {
-        flex-wrap: wrap;
-        gap: var(--gap);
-      }
-
-      /* =====================
-         Mobile Experience
-         ===================== */
-
-      @media (max-width: 640px) {
-        .nav {
-          padding: 0.6rem 0;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero .cluster {
-          gap: 0.4rem;
-        }
-        .hero .cluster .pill {
-          flex: 0 1 auto;
-        }
-        .hero .cluster .btn-primary {
-          width: 100%;
-          text-align: center;
-        }
-      }
-
-      /* Experience bullet spacing */
-      [data-role="bullets"] li + li {
-        margin-top: 0.4rem;
-      }
-
-      /* =====================
-         Nav avatar (scroll target)
-         ===================== */
-      .nav-avatar {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-        flex: 0 0 auto;
-        margin-left: auto;
-        opacity: 0;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        border: 1.5px solid color-mix(in oklab, var(--accent), transparent 50%);
-        position: relative;
-        transition: opacity 0.15s ease;
-        flex-shrink: 0;
-      }
-
-      .nav-avatar img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Flying clone between hero and nav */
-      .photo-fly {
-        position: fixed;
-        top: 0;
-        left: 0;
-        border-radius: 50%;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 300;
-        will-change: transform, width, height;
-        opacity: 0;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: 700;
-        border: 2px solid color-mix(in oklab, var(--accent), transparent 55%);
-        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 85%);
-      }
-
-      .photo-fly img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* =====================
-         Hero photo
-         ===================== */
-      .hero-layout {
-        display: flex;
-        align-items: center;
-        gap: clamp(2rem, 5vw, 4rem);
-      }
-
-      .hero-text {
-        flex: 1 1 0;
-        min-width: 0;
-      }
-
-      .hero-photo-wrap {
-        flex: 0 0 auto;
-        position: relative;
-        width: clamp(130px, 16vw, 190px);
-        height: clamp(130px, 16vw, 190px);
-      }
-
-      .hero-photo-placeholder {
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #fff;
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        user-select: none;
-      }
-
-      .hero-photo {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid color-mix(in oklab, var(--accent), transparent 60%);
-        box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent), transparent 88%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .hero-photo.loaded {
-        opacity: 1;
-      }
-
-      @media (max-width: 600px) {
-        .hero-layout {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .hero-photo-wrap {
-          align-self: center;
-          order: -1;
-        }
-      }
-    </style>
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff"  media="(prefers-color-scheme: light)" />
+
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/components.css" />
   </head>
 
   <body>
-    <a
-      class="pill"
-      href="#content"
-      style="position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; top: 6px; left: 6px"
-      >Skip to content</a
-    >
+    <a class="skip-link" href="#content">Skip to content</a>
 
     <header class="site">
       <div class="container">
@@ -956,17 +28,26 @@
             <a href="#projects">Projects</a>
             <a href="#learning">Certificates</a>
           </div>
-          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button>
-          <div class="nav-avatar" id="nav-avatar" aria-hidden="true"><span>HA</span></div>
-          <div class="progress-wrap" aria-hidden="true">
-            <div class="progress" id="scroll-progress"></div>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >☰</button>
+          <div class="nav-avatar" id="nav-avatar" aria-hidden="true">
+            <span>HA</span>
+          </div>
+          <div class="progress-bar-track" aria-hidden="true">
+            <div class="progress-bar-fill" id="scroll-progress"></div>
           </div>
         </nav>
       </div>
     </header>
 
     <main id="content">
-      <!-- Hero / About -->
+
+      <!-- ── Hero / About ──────────────────────────────────────────── -->
       <section id="about" class="hero">
         <div class="container">
           <div class="hero-layout">
@@ -983,78 +64,51 @@
               </p>
               <div class="cluster">
                 <a class="pill" href="tel:+447983876715">+44 7983 876715</a>
-                <a class="pill" href="mailto:himanshuabburu@gmail.com"
-                  >himanshuabburu@gmail.com</a
-                >
-                <a
-                  class="pill"
-                  href="https://www.linkedin.com/in/himanshuabburu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >LinkedIn</a
-                >
-                <a
-                  class="pill"
-                  href="https://github.com/HimanshuAbburu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-                <a
-                  class="pill"
-                  href="https://himanshu-abburu.netlify.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Portfolio</a
-                >
+                <a class="pill" href="mailto:himanshuabburu@gmail.com">himanshuabburu@gmail.com</a>
+                <a class="pill" href="https://www.linkedin.com/in/himanshuabburu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="pill" href="https://github.com/HimanshuAbburu"           target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="pill" href="https://himanshu-abburu.netlify.app/"         target="_blank" rel="noopener noreferrer">Portfolio</a>
                 <a class="btn-primary" href="mailto:himanshuabburu@gmail.com">Get in touch</a>
               </div>
             </div>
-            <!-- Profile photo: replace src with your image path to activate -->
+            <!-- Profile photo: set src to your image path to activate -->
             <div class="hero-photo-wrap">
               <div class="hero-photo-placeholder" aria-hidden="true">HA</div>
-              <img
-                class="hero-photo"
-                id="hero-photo"
-                src=""
-                alt="Himanshu Abburu"
-              />
+              <img class="hero-photo" id="hero-photo" src="" alt="Himanshu Abburu" />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Experience -->
-      <section id="experience" aria-labelledby="exp-h2">
+      <!-- ── Experience ─────────────────────────────────────────────── -->
+      <section id="experience" aria-labelledby="exp-heading">
         <div class="container stack animate-ready">
           <header class="stack">
-            <h2 id="exp-h2">Experience</h2>
+            <h2 id="exp-heading">Experience</h2>
             <p class="muted">Highlights from recent roles.</p>
           </header>
           <div class="stack" id="exp-list"></div>
         </div>
       </section>
 
-      <!-- Skills -->
-      <section id="skills" aria-labelledby="skills-h2">
+      <!-- ── Skills ────────────────────────────────────────────────── -->
+      <section id="skills" aria-labelledby="skills-heading">
         <div class="container stack animate-ready">
           <header class="stack">
-            <h2 id="skills-h2">Skills</h2>
-            <p class="muted">
-              Languages, frameworks, cloud, and DevOps I use most.
-            </p>
+            <h2 id="skills-heading">Skills</h2>
+            <p class="muted">Languages, frameworks, cloud, and DevOps I use most.</p>
           </header>
           <div class="grid skills" id="skills-grid"></div>
         </div>
       </section>
-      <!-- Projects -->
-      <section id="projects" aria-labelledby="projects-h2">
+
+      <!-- ── Projects ──────────────────────────────────────────────── -->
+      <section id="projects" aria-labelledby="projects-heading">
         <div class="container stack animate-ready">
           <header class="stack">
-            <h2 id="projects-h2">Personal Projects</h2>
+            <h2 id="projects-heading">Personal Projects</h2>
             <p class="muted">Concrete work with measurable impact.</p>
           </header>
-
           <div class="carousel" id="projects-carousel">
             <div
               class="carousel-viewport"
@@ -1062,779 +116,104 @@
               tabindex="0"
               aria-live="polite"
             ></div>
-            <div
-              class="carousel-controls cluster"
-              style="justify-content: space-between; align-items: center"
-            >
-              <button class="pill" id="proj-prev" aria-label="Previous">
-                ‹
-              </button>
-              <div
-                class="dots"
-                id="proj-dots"
-                role="tablist"
-                aria-label="Project slides"
-              ></div>
-              <button class="pill" id="proj-next" aria-label="Next">›</button>
+            <div class="carousel-controls">
+              <button class="pill carousel-btn" id="proj-prev" aria-label="Previous project">‹</button>
+              <div class="carousel-dots" id="proj-dots" role="tablist" aria-label="Project slides"></div>
+              <button class="pill carousel-btn" id="proj-next" aria-label="Next project">›</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Education & Certifications -->
-      <section id="learning" aria-labelledby="learn-h2">
+      <!-- ── Education & Certifications ───────────────────────────── -->
+      <section id="learning" aria-labelledby="learning-heading">
         <div class="container stack animate-ready">
           <header class="stack">
-            <h2 id="learn-h2">Education & Certifications</h2>
+            <h2 id="learning-heading">Education &amp; Certifications</h2>
           </header>
           <div class="grid" id="edu-cert"></div>
         </div>
       </section>
+
     </main>
 
     <footer>
-      <div class="container cluster" style="justify-content: space-between">
+      <div class="container footer-bar">
         <small class="muted"><span id="year"></span> Himanshu Abburu</small>
         <div class="cluster">
-          <a
-            class="pill"
-            href="https://www.linkedin.com/in/himanshuabburu"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-          <a
-            class="pill"
-            href="https://github.com/HimanshuAbburu"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
+          <a class="pill" href="https://www.linkedin.com/in/himanshuabburu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="pill" href="https://github.com/HimanshuAbburu"           target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="pill" href="mailto:himanshuabburu@gmail.com">Email</a>
         </div>
       </div>
     </footer>
 
-    <!-- ===== Templates (Modular) ===== -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         Card templates — cloned by renderers.js, never shown directly
+         ═══════════════════════════════════════════════════════════════ -->
+
     <template id="tpl-project">
-      <article class="card stack project-card" style="gap: 0.9rem">
-        <figure class="media">
+      <article class="card project-card">
+        <figure class="project-card__preview">
           <img
-            class="cover"
+            class="project-card__image"
             data-role="cover"
             alt=""
             loading="lazy"
             decoding="async"
           />
         </figure>
-
-        <header class="stack" style="gap: 0.25rem">
+        <header class="project-card__header">
           <small class="kicker" data-role="kicker"></small>
-          <h3 style="margin: 0; font-size: var(--t1)" data-role="title"></h3>
+          <h3 class="project-card__title" data-role="title"></h3>
         </header>
-
-        <p class="desc" data-role="desc"></p>
-        <div class="rule" data-role="divider"></div>
+        <p class="desc"    data-role="desc"></p>
+        <div class="rule"  data-role="divider"></div>
         <p class="explain" data-role="explain"></p>
-
-        <ul
-          class="list-plain cluster"
-          data-role="tags"
-          style="gap: 0.45rem; flex-wrap: wrap"
-        ></ul>
-        <div
-          class="cluster"
-          data-role="links"
-          style="gap: 0.5rem; flex-wrap: wrap"
-        ></div>
+        <ul class="project-card__tags"  data-role="tags"></ul>
+        <div class="project-card__links" data-role="links"></div>
       </article>
     </template>
 
     <template id="tpl-skill">
-      <article class="card stack skill-card">
-        <div class="skill-header">
+      <article class="card skill-card">
+        <div class="skill-card__header">
           <div class="skill-icon" data-role="icon" aria-hidden="true"></div>
-          <h3 style="margin: 0; font-size: var(--t0)" data-role="title"></h3>
+          <h3 class="skill-card__title" data-role="title"></h3>
         </div>
-        <div class="skill-items" data-role="items"></div>
+        <div class="skill-tag-list" data-role="items"></div>
       </article>
     </template>
 
     <template id="tpl-exp">
-      <article class="card stack" style="gap: 0.6rem">
-        <div
-          class="cluster"
-          style="justify-content: space-between; align-items: flex-start"
-        >
+      <article class="card exp-card">
+        <div class="exp-card__header">
           <div>
-            <h3 style="margin: 0.1rem 0 0" data-role="role"></h3>
-            <div class="muted" data-role="company"></div>
+            <h3 class="exp-card__role" data-role="role"></h3>
+            <div class="exp-card__company muted" data-role="company"></div>
           </div>
           <span class="pill" data-role="dates"></span>
         </div>
-        <ul
-          class="stack"
-          data-role="bullets"
-          style="margin: 0; padding-left: 1rem"
-        ></ul>
+        <ul class="exp-card__bullets" data-role="bullets"></ul>
       </article>
     </template>
 
     <template id="tpl-edu">
-      <article class="card stack" style="gap: 0.5rem">
-        <h3 style="margin: 0" data-role="title"></h3>
-        <div class="muted" data-role="place"></div>
-        <ul data-role="list" style="margin: 0; padding-left: 1.1rem"></ul>
+      <article class="card edu-card">
+        <h3 class="edu-card__title" data-role="title"></h3>
+        <div class="muted"          data-role="place"></div>
+        <ul class="edu-card__list"  data-role="list"></ul>
       </article>
     </template>
 
-    <script type="module">
-      // ========= Content from CV =========
-      // Keep it modular and editable
-      const DATA = {
-        about: {
-          name: "Himanshu Abburu",
-          summary:
-            "Software engineer with 3+ years' experience designing and scaling backend systems across AWS, Azure and Java. Strong background in API design, financial data integration and secure cloud-native architectures. Known for balancing technical depth with business outcomes — from automating financial workflows to improving developer experience.",
-        },
-        links: {
-          phone: "+44 7983876715",
-          email: "himanshuabburu@gmail.com",
-          linkedin: "https://www.linkedin.com/in/himanshuabburu",
-          github: "https://github.com/HimanshuAbburu",
-          portfolio: "https://himanshu-abburu.netlify.app/",
-        },
-        projects: [
-          {
-            title: "Humble Donations Charity Website",
-            subtitle: "Full-stack marketplace",
-            desc: "Full-stack digital marketplace modelled on Amazon's e-commerce experience.",
-            explain:
-              "A feature-rich platform for exchange of goods integrating real-time database functionality and seamless user authentication. Designed with user experience principles in mind, targeting zero downtime through peak hours.",
-            tags: ["Node.js", "React", "Express.js", "MongoDB", "Firebase"],
-            code: "https://github.com/HimanshuAbburu/HumbleDonations_Frontend",
-            demo: "https://humbledonations.netlify.app/",
-          },
-          {
-            title: "Nano-GPT2",
-            subtitle: "Transformer from scratch",
-            desc: "Production-ready GPT-2 architecture built with PyTorch and Clean Architecture.",
-            explain:
-              "Implemented a GPT-2 transformer using PyTorch, applying SOLID principles and Clean Architecture for modularity. Built a custom CLI for training and inference with multi-head self-attention and character-level tokenization for large-scale text datasets.",
-            tags: ["Python", "PyTorch", "Transformers", "ML"],
-            code: "https://github.com/HimanshuAbburu/gpt-2",
-          },
-          {
-            title: "Luhn Algorithm Validator",
-            subtitle: "Financial security",
-            desc: "High-performance credit card validator to cut unnecessary API calls to payment processors.",
-            explain:
-              "Engineered a Python-based implementation of the Luhn checksum formula to validate credit card formatting, reducing unnecessary API calls to payment processors. Focused on catching typos and transposed digits for efficient handling of sensitive financial data.",
-            tags: ["Python", "Algorithms", "Security"],
-            code: "https://github.com/HimanshuAbburu/Luhn_Algo",
-          },
-        ],
-        skills: [
-          {
-            area: "Languages & APIs",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-            items: ["Java", "Python", "Node.js", "REST API", "OpenAPI/Swagger"],
-          },
-          {
-            area: "Frameworks",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-            items: ["Spring Boot", "Express.js", "React"],
-          },
-          {
-            area: "Cloud",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`,
-            items: ["AWS (Lambda, S3, CodeBuild, CloudFormation)", "Azure (LogicApps, APIM)"],
-          },
-          {
-            area: "Databases",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
-            items: ["Azure SQL", "MongoDB", "PostgreSQL"],
-          },
-          {
-            area: "DevOps & IaC",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>`,
-            items: ["Git", "Azure DevOps", "AWS CodePipeline", "AWS CodeBuild", "Terraform", "CloudFormation"],
-          },
-          {
-            area: "Security",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-            items: ["IAM", "RBAC", "OAuth2", "JWT"],
-          },
-        ],
-        experience: [
-          {
-            role: "Integration Designer & Developer - 3",
-            company: "Glue Reply · London",
-            companyUrl: "https://www.reply.com/glue-reply/en/",
-            dates: "Aug 2025 – Present",
-            bullets: [
-              "Architected and implemented CI/CD using AWS CodeCommit, CodeBuild, CodePipeline, and EventBridge. Assigned role-based access control across AWS infrastructure for a public sector client.",
-              "Led the development of AI-driven automation using RAG-based AI assistants to assess and enhance MuleSoft code, enforce best practices, and reduce code review time by 45%.",
-              "Convinced a prospective client to sign up for a new solution after demonstrating deep technical knowledge in discussions.",
-            ],
-          },
-          {
-            role: "Integration Designer & Developer - 2",
-            company: "Glue Reply · London",
-            companyUrl: "https://www.reply.com/glue-reply/en/",
-            dates: "Jul 2023 – Aug 2025",
-            bullets: [
-              "Built financial APIs for ERP and invoicing systems, reducing manual reconciliation by 60% and ensuring more reliable reporting.",
-              "Automated complex operational processes using Azure DevOps pipelines, increasing task efficiency and eliminating repetitive manual tasks by up to 50%.",
-              "Led the integration of over 40 APIs across nine Azure SQL databases using Azure Logic Apps and API Management to ensure seamless and reliable data synchronisation.",
-              "Conceptualised proof-of-concepts leveraging AWS Lambda, S3, and Terraform, enabling a shift from legacy systems to modernised cloud infrastructure.",
-            ],
-          },
-          {
-            role: "Integration Developer & Consultant - 1",
-            company: "Glue Reply · London",
-            companyUrl: "https://www.reply.com/glue-reply/en/",
-            dates: "Aug 2022 – Jul 2023",
-            bullets: [
-              "Automated onboarding processes via Azure DevOps pipelines, cutting processing time by 80%.",
-              "Identified and resolved critical operational issues under high-pressure scenarios, preserving system stability and minimising downtime.",
-              "Conducted rigorous testing procedures resulting in zero post-deployment errors across all integrations delivered during tenure.",
-              "Conducted extensive QA on API implementations, ensuring optimal performance and alignment with stakeholder expectations.",
-            ],
-          },
-          {
-            role: "Application Engineering Intern",
-            company: "Bosch Rexroth Ltd. · Glenrothes",
-            companyUrl: "https://www.boschrexroth.com/en/gb/",
-            dates: "Aug 2020 – Aug 2021",
-            bullets: [
-              "Reengineered internal tools using MATLAB, JavaScript, HTML, and CSS, achieving 100% user adoption and improved usability.",
-              "Designed and implemented Java-based ETL applications to automate data aggregation, reducing manual workloads by 70% and improving data accuracy.",
-              "Enhanced the R&D Test Tracker by introducing streamlined workflows, intuitive UI components, and new data visualisation features.",
-              "Created and distributed a course management system across seven departments, streamlining CSV data processing and improving team access to educational resources.",
-            ],
-          },
-        ],
-        education: {
-          title: "BSc (Hons) Computer Science with Placement Year — First Class",
-          place: "De Montfort University, Leicester, UK",
-          list: [],
-        },
-        certifications: [
-          {
-            label: "AWS Certified AI Practitioner",
-            url: "https://www.credly.com/badges/02098d6a-803d-4530-8035-1fe658ea5803/linked_in_profile",
-          },
-          {
-            label: "AWS Certified Developer – Associate",
-            url: "https://www.credly.com/badges/fc828e0e-99b5-4ade-82a9-ebf42d9d38c6/linked_in_profile",
-          },
-          {
-            label: "Microsoft Certified: Azure Fundamentals (AZ-900)",
-            url: "https://learn.microsoft.com/en-us/users/himanshuabburu-8565/transcript/drzxt0mlwwr3yl7?source=docs",
-          },
-          {
-            label: "Core Java Certification",
-            url: "https://www.linkedin.com/in/himanshuabburu/details/certifications/",
-          },
-          {
-            label: "Data Science & Programming Fundamentals",
-            url: "https://www.codecademy.com/profiles/HimanshuAbburu/certificates/5701108f64cd4a02981c161085ccc50e",
-          },
-        ],
-      };
-
-      // ========= DOM helpers =========
-      const $ = (s, c = document) => c.querySelector(s);
-      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-      const el = (t, props = {}, ...kids) => {
-        const n = document.createElement(t);
-        for (const [k, v] of Object.entries(props)) {
-          if (k === "className") n.className = v;
-          else if (k.startsWith("aria-") || k === "role") n.setAttribute(k, v);
-          else n[k] = v;
-        }
-        kids
-          .flat()
-          .forEach((k) =>
-            n.append(k?.nodeType ? k : document.createTextNode(k)),
-          );
-        return n;
-      };
-
-      const mshot = (url, w = 900) =>
-        `https://s.wordpress.com/mshots/v1/${encodeURIComponent(
-          url,
-        )}?w=${w}&scale=2`;
-
-      // ========= Projects =========
-      const projTpl = document.getElementById("tpl-project");
-      const track = document.getElementById("projects-track");
-      const dotsEl = document.getElementById("proj-dots");
-      const prevBtn = document.getElementById("proj-prev");
-      const nextBtn = document.getElementById("proj-next");
-
-      if (projTpl && track) {
-        track.innerHTML = "";
-        DATA.projects.forEach((p, i) => {
-          const node = projTpl.content.cloneNode(true);
-          const coverEl = node.querySelector('[data-role="cover"]');
-          const kickerEl = node.querySelector('[data-role="kicker"]');
-          const titleEl = node.querySelector('[data-role="title"]');
-          const descEl = node.querySelector('[data-role="desc"]');
-          const explainEl = node.querySelector('[data-role="explain"]');
-          const dividerEl = node.querySelector('[data-role="divider"]');
-          const tagsEl = node.querySelector('[data-role="tags"]');
-          const linksEl = node.querySelector('[data-role="links"]');
-
-          titleEl.textContent = p.title || "";
-          if (p.subtitle) kickerEl.textContent = p.subtitle;
-          else kickerEl.remove();
-          if (p.desc) descEl.textContent = p.desc;
-          else descEl.remove();
-          if (p.explain) {
-            explainEl.textContent = p.explain;
-          } else {
-            explainEl.remove();
-            dividerEl.remove();
-          }
-          (p.tags || []).forEach((t) =>
-            tagsEl.append(el("li", { className: "pill" }, t)),
-          );
-          if (!tagsEl.childElementCount) tagsEl.remove();
-          if (p.code)
-            linksEl.append(
-              el(
-                "a",
-                {
-                  className: "pill",
-                  href: p.code,
-                  target: "_blank",
-                  rel: "noopener",
-                },
-                "Code",
-              ),
-            );
-          if (p.demo)
-            linksEl.append(
-              el(
-                "a",
-                {
-                  className: "pill",
-                  href: p.demo,
-                  target: "_blank",
-                  rel: "noopener",
-                },
-                "Live",
-              ),
-            );
-          if (!linksEl.childElementCount) linksEl.remove();
-
-          const homepage = p.demo || p.code;
-          const mediaEl = coverEl.closest(".media");
-
-          const placeholder = document.createElement("div");
-          placeholder.className = "cover-placeholder";
-          placeholder.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>${p.title}</span>`;
-
-          if (homepage) {
-            coverEl.alt = `${p.title} — homepage preview`;
-            coverEl.src = mshot(homepage, 900);
-            coverEl.srcset = [
-              `${mshot(homepage, 600)} 600w`,
-              `${mshot(homepage, 900)} 900w`,
-              `${mshot(homepage, 1200)} 1200w`,
-            ].join(", ");
-            coverEl.sizes = "(min-width: 900px) 520px, 92vw";
-
-            mediaEl.insertBefore(placeholder, coverEl);
-
-            coverEl.onload = () => placeholder.classList.add("loaded");
-            coverEl.onerror = () => {
-              coverEl.style.display = "none";
-            };
-          } else {
-            mediaEl.innerHTML = "";
-            mediaEl.appendChild(placeholder);
-          }
-
-          const slide = el("div", { className: "slide" });
-          slide.append(node);
-          track.append(slide);
-
-          const dot = el("button", {
-            type: "button",
-            role: "tab",
-            "aria-label": p.title,
-          });
-          dot.addEventListener("click", () => goTo(i));
-          dotsEl.append(dot);
-        });
-
-        const slides = [...track.children];
-        let active = 0;
-
-        const updateUI = () => {
-          [...dotsEl.children].forEach((b, i) =>
-            b.setAttribute("aria-selected", i === active ? "true" : "false"),
-          );
-        };
-
-        const goTo = (i) => {
-          active = ((i % slides.length) + slides.length) % slides.length;
-          track.scrollTo({
-            left: slides[active].offsetLeft,
-            behavior: "smooth",
-          });
-          updateUI();
-        };
-
-        prevBtn?.addEventListener("click", () => goTo(active - 1));
-        nextBtn?.addEventListener("click", () => goTo(active + 1));
-
-        const onScroll = () => {
-          const x = track.scrollLeft;
-          let nearest = 0,
-            best = Infinity;
-          slides.forEach((s, i) => {
-            const d = Math.abs(s.offsetLeft - x);
-            if (d < best) {
-              best = d;
-              nearest = i;
-            }
-          });
-          if (nearest !== active) {
-            active = nearest;
-            updateUI();
-          }
-        };
-        track.addEventListener("scroll", onScroll, { passive: true });
-        track.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") goTo(active + 1);
-          if (e.key === "ArrowLeft") goTo(active - 1);
-        });
-
-        updateUI();
-
-        addEventListener(
-          "resize",
-          () => {
-            // re-snap to the active slide after layout changes
-            track &&
-              slides.length &&
-              track.scrollTo({ left: slides[active].offsetLeft });
-          },
-          { passive: true },
-        );
-      }
-
-      // ========= Skills =========
-      const skillTpl = document.getElementById("tpl-skill");
-      const skillGrid = document.getElementById("skills-grid");
-      DATA.skills.forEach((s) => {
-        const node = skillTpl.content.cloneNode(true);
-        node.querySelector('[data-role="title"]').textContent = s.area;
-        node.querySelector('[data-role="icon"]').innerHTML = s.icon || "";
-        const items = node.querySelector('[data-role="items"]');
-        s.items.forEach((i) =>
-          items.append(el("span", { className: "skill-chip" }, i)),
-        );
-        skillGrid.append(node);
-      });
-
-      // ========= Experience =========
-      // ========= Experience =========
-      const expTpl = document.getElementById("tpl-exp");
-      const expList = document.getElementById("exp-list");
-      DATA.experience.forEach((e) => {
-        const node = expTpl.content.cloneNode(true);
-        node.querySelector('[data-role="role"]').textContent = e.role;
-
-        const companyEl = node.querySelector('[data-role="company"]');
-        if (e.companyUrl) {
-          const [name, rest] = (e.company || "")
-            .split("·")
-            .map((s) => s.trim());
-          const a = el(
-            "a",
-            {
-              href: e.companyUrl,
-              target: "_blank",
-              rel: "noopener",
-              "aria-label": `Visit ${name} website`,
-            },
-            name || e.company,
-          );
-          companyEl.textContent = "";
-          companyEl.append(a);
-          if (rest) companyEl.append(document.createTextNode(` · ${rest}`));
-        } else {
-          companyEl.textContent = e.company;
-        }
-
-        node.querySelector('[data-role="dates"]').textContent = e.dates;
-        const ul = node.querySelector('[data-role="bullets"]');
-        e.bullets.forEach((b) => ul.append(el("li", {}, b)));
-        expList.append(node);
-      });
-
-      // ========= Education & Certs =========
-      const eduCert = document.getElementById("edu-cert");
-      const eduTpl = document.getElementById("tpl-edu");
-
-      const eduNode = eduTpl.content.cloneNode(true);
-      eduNode.querySelector('[data-role="title"]').textContent =
-        DATA.education.title;
-      eduNode.querySelector('[data-role="place"]').textContent =
-        DATA.education.place;
-      const eduUl = eduNode.querySelector('[data-role="list"]');
-      if (!DATA.education.list.length) eduUl.remove();
-      else DATA.education.list.forEach((item) => eduUl.append(el("li", {}, item)));
-      eduCert.append(eduNode);
-
-      const certNode = eduTpl.content.cloneNode(true);
-      certNode.querySelector('[data-role="title"]').textContent =
-        "Certifications";
-      certNode.querySelector('[data-role="place"]').remove();
-      const certList = certNode.querySelector('[data-role="list"]');
-      DATA.certifications.forEach((c) => {
-        const li = el("li", {});
-        const a = el(
-          "a",
-          { href: c.url || "#", target: "_blank", rel: "noopener" },
-          c.label,
-        );
-        li.append(a);
-        certList.append(li);
-      });
-      eduCert.append(certNode);
-
-      // ========= Profile photo =========
-      const heroPhoto = document.getElementById("hero-photo");
-      if (heroPhoto?.src) {
-        heroPhoto.onload = () => heroPhoto.classList.add("loaded");
-        heroPhoto.onerror = () => heroPhoto.remove();
-      }
-
-      // ========= Footer =========
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      // ========= Active link on scroll =========
-      const links = [...document.querySelectorAll('.nav a[href^="#"]')];
-      const sections = links
-        .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
-        .filter(Boolean);
-
-      // Track visibility ratios; pick the section with the highest ratio to avoid flicker
-      const visibilityMap = new Map(sections.map((s) => [s.id, 0]));
-
-      const setActive = (id) => {
-        links.forEach((a) => a.removeAttribute("aria-current"));
-        const link = links.find((a) => a.getAttribute("href") === `#${id}`);
-        if (!link) return;
-        link.setAttribute("aria-current", "page");
-        link.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
-      };
-
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => visibilityMap.set(e.target.id, e.intersectionRatio));
-          let bestId = null, bestRatio = 0;
-          visibilityMap.forEach((ratio, id) => {
-            if (ratio > bestRatio) { bestRatio = ratio; bestId = id; }
-          });
-          if (bestId) setActive(bestId);
-        },
-        { rootMargin: "-10% 0px -10% 0px", threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
-      );
-
-      sections.forEach((s) => io.observe(s));
-
-      // ========= Hamburger toggle =========
-      const navToggle = document.getElementById("nav-toggle");
-      const siteNav = document.getElementById("site-nav");
-      navToggle?.addEventListener("click", () => {
-        const open = siteNav.classList.toggle("open");
-        navToggle.setAttribute("aria-expanded", open);
-        navToggle.textContent = open ? "✕" : "☰";
-      });
-      // Close menu when a nav link is clicked
-      siteNav?.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => {
-          siteNav.classList.remove("open");
-          navToggle?.setAttribute("aria-expanded", "false");
-          navToggle && (navToggle.textContent = "☰");
-        }),
-      );
-
-      // Nave Bar Sticky
-      const progressEl = document.getElementById("scroll-progress");
-      const updateProgress = () => {
-        const y = document.documentElement.scrollTop || document.body.scrollTop;
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = h > 0 ? (y / h) * 100 : 0;
-        progressEl.style.width = pct + "%";
-      };
-      addEventListener("scroll", updateProgress, { passive: true });
-      addEventListener("resize", updateProgress, { passive: true });
-      updateProgress();
-      const headerEl = document.querySelector("header.site");
-      const setNavHeight = () =>
-        document.documentElement.style.setProperty(
-          "--nav-h",
-          headerEl.offsetHeight + "px",
-        );
-      setNavHeight();
-      addEventListener("resize", setNavHeight);
-
-      // ========= Sticky avatar scroll transition =========
-      const heroWrap = document.querySelector(".hero-photo-wrap");
-      const navAvatarEl = document.getElementById("nav-avatar");
-
-      const flyEl = document.createElement("div");
-      flyEl.className = "photo-fly";
-      flyEl.setAttribute("aria-hidden", "true");
-      flyEl.innerHTML = `<span>HA</span>`;
-      document.body.appendChild(flyEl);
-
-      heroPhoto.addEventListener("load", () => {
-        [flyEl, navAvatarEl].forEach((container) => {
-          const img = document.createElement("img");
-          img.src = heroPhoto.src;
-          img.alt = "";
-          container.appendChild(img);
-        });
-      });
-
-      const lerp = (a, b, t) => a + (b - a) * t;
-      const easeInOut = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      // Cache nav avatar rect — only recompute on resize
-      let navAvatarRect = null;
-      const refreshNavRect = () => { navAvatarRect = navAvatarEl.getBoundingClientRect(); };
-      addEventListener("resize", refreshNavRect, { passive: true });
-
-      let flyTicking = false;
-
-      const updatePhotoFly = () => {
-        // Always use live hero rect (it scrolls); cached nav rect is fine (fixed position)
-        const heroRect = heroWrap.getBoundingClientRect();
-        if (!navAvatarRect) refreshNavRect();
-
-        const navH = headerEl.offsetHeight;
-        const heroH = heroRect.width; // circle, so width === height
-
-        // t spans a 2× hero-height scroll window for a leisurely transition
-        const raw = (navH - heroRect.top) / (heroH * 2);
-        const t = Math.max(0, Math.min(1, raw));
-
-        // Phase 1 (t 0→0.25): cross-fade hero out / fly in at same position
-        // Phase 2 (t 0.25→1): fly travels from hero position to nav slot
-        const FADE = 0.25;
-        const heroOpacity = Math.max(0, 1 - t / FADE);
-        const flyOpacity  = Math.min(1, t / FADE);
-        const moveT = t <= FADE ? 0 : (t - FADE) / (1 - FADE);
-        const et = easeInOut(moveT);
-
-        heroWrap.style.opacity = String(heroOpacity);
-        flyEl.style.opacity    = String(flyOpacity);
-
-        if (prefersReducedMotion) {
-          // Snap: no animation, just cross-fade
-          navAvatarEl.style.opacity = t >= 1 ? "1" : "0";
-          return;
-        }
-
-        if (t >= 1) {
-          flyEl.style.opacity        = "0";
-          navAvatarEl.style.opacity  = "1";
-          return;
-        }
-
-        navAvatarEl.style.opacity = "0";
-
-        // Start position: current hero circle centre + size
-        const sx = heroRect.left + heroRect.width  / 2;
-        const sy = heroRect.top  + heroRect.height / 2;
-        const ss = heroRect.width;
-
-        // End position: nav avatar centre + size
-        const ex = navAvatarRect.left + navAvatarRect.width  / 2;
-        const ey = navAvatarRect.top  + navAvatarRect.height / 2;
-        const es = navAvatarRect.width;
-
-        const cx = lerp(sx, ex, et);
-        const cy = lerp(sy, ey, et);
-        const cs = lerp(ss, es, et);
-
-        flyEl.style.width     = cs + "px";
-        flyEl.style.height    = cs + "px";
-        flyEl.style.fontSize  = cs * 0.28 + "px";
-        flyEl.style.transform = `translate(${cx - cs / 2}px, ${cy - cs / 2}px)`;
-      };
-
-      addEventListener("scroll", () => {
-        if (!flyTicking) {
-          requestAnimationFrame(() => { updatePhotoFly(); flyTicking = false; });
-          flyTicking = true;
-        }
-      }, { passive: true });
-
-      addEventListener("resize", () => {
-        refreshNavRect();
-        updatePhotoFly();
-      }, { passive: true });
-
-      // Initialise after first layout paint so rects are available.
-      // Pre-position the fly element at the hero to avoid the (0,0) flash.
-      requestAnimationFrame(() => {
-        refreshNavRect();
-        const r = heroWrap.getBoundingClientRect();
-        flyEl.style.width  = r.width  + "px";
-        flyEl.style.height = r.height + "px";
-        flyEl.style.transform = `translate(${r.left}px, ${r.top}px)`;
-        flyEl.style.fontSize  = r.width * 0.28 + "px";
-        updatePhotoFly();
-      });
-
-      // ========= Scroll-reveal =========
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              revealObserver.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-      document.querySelectorAll(".animate-ready").forEach((el) => revealObserver.observe(el));
-
-      // Also fix dots: remove old inline width/background (now handled via ::after pseudo)
-      // The dots button background was set to var(--line) directly — override with transparent
-      // so the ::after pseudo-element controls appearance
-      document.querySelectorAll(".dots button").forEach((b) => {
-        b.style.background = "transparent";
-        b.style.width = "";
-      });
-    </script>
-
-    <!-- Structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Himanshu Abburu",
-        "jobTitle": "Software Engineer (Backend & Integration)",
-        "email": "mailto:himanshuabburu@gmail.com",
-        "url": "https://himanshu-abburu.netlify.app/",
-        "sameAs": [
-          "https://www.linkedin.com/in/himanshuabburu",
-          "https://github.com/HimanshuAbburu"
-        ]
-      }
-    </script>
+    <!-- Scripts loaded in dependency order -->
+    <script src="js/data.js"          defer></script>
+    <script src="js/utils.js"         defer></script>
+    <script src="js/Carousel.js"      defer></script>
+    <script src="js/NavController.js" defer></script>
+    <script src="js/PhotoFly.js"      defer></script>
+    <script src="js/renderers.js"     defer></script>
+    <script src="js/main.js"          defer></script>
+    <script src="js/seo.js"           defer></script>
   </body>
 </html>
